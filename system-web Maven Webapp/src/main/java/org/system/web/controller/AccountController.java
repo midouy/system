@@ -34,7 +34,6 @@ public class AccountController
 
         model.addAttribute("list",list);
         model.addAttribute("result",result);
-
         return "account/index";
     }
 
