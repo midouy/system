@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.system.dao.StudentDao">
+
+    <resultMap id="resultStudentList" type="org.system.domain.Student">
+        <!--column是只从数据库查到的字段名称-->
+        <!--property是只Student类的属性-->
+        <!--一般情况下, 这种map的目的在于隐藏数据库中的不想对外显示的数据, 并且需要建立新的类去封装这些需要显示的数据-->
+        <result column="name" property="name"/>
+        <result column="age" property="age"/>
+        <result column="sex" property="sex"/>
+    </resultMap>
+    
+    <resultMap id="resultStudentArticleList" type="org.system.domain.Article">
+        <result column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="content" property="content"/>
+
+        <association property="student" javaType="org.system.domain.Student">
+            <id property="name" column="userName"/>
+        </association>
+    </resultMap>
+
+    <select id="getStudent" resultType="org.system.domain.Student" parameterType="java.lang.String">
+        SELECT * from students where name = #{name}
+    </select>
+
+    <select id="listStudents" resultMap="resultStudentList">
+        SELECT * FROM students
+    </select>
+
+    <insert id="addStudent" parameterType="org.system.domain.Student">
+        INSERT into students(name, age, sex) VALUES (#{name}, #{age}, #{sex})
+    </insert>
+
+    <delete id="deleteStudent" parameterType="java.lang.String">
+        delete from students where name = #{name}
+    </delete>
+
+    <update id="editStudent" parameterType="org.system.domain.Student">
+        UPDATE  students set name=#{name}, age=#{age}, sex=#{sex} where name = #{name}
+    </update>
+
+    <select id="getStudentArticles" parameterType="java.lang.String" resultMap="resultStudentArticleList">
+        select * from students, article where students.name=#{name} and students.name=article.userName order by article.id DESC
+    </select>
+
+</mapper>

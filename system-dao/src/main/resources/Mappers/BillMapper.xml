@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.system.dao.BillDao">
+
+    <resultMap id="AllBillList" type="org.system.domain.account.Bill">
+        <!--column是只从数据库查到的字段名称-->
+        <!--property是只Student类的属性-->
+        <!--一般情况下, 这种map的目的在于隐藏数据库中的不想对外显示的数据, 并且需要建立新的类去封装这些需要显示的数据-->
+        <result column="id" property="id"/>
+        <result column="payPerson" property="payPerson"/>
+        <result column="shareWYM" property="shareWYM"/>
+        <result column="shareLRH" property="shareLRH"/>
+        <result column="shareCX" property="shareCX"/>
+        <result column="shareZXW" property="shareZXW"/>
+        <result column="money" property="money"/>
+        <result column="note" property="note"/>
+        <result column="date" property="date"/>
+    </resultMap>
+
+    <select id="getBill" resultType="org.system.domain.account.Bill" parameterType="java.lang.Integer">
+        SELECT * from bills where id = #{id}
+    </select>
+
+    <select id="listAllBill" resultMap="AllBillList">
+        SELECT * FROM bills
+    </select>
+
+    <insert id="addBill" parameterType="org.system.domain.account.Bill">
+        INSERT into bills (payPerson,shareWYM,shareLRH,shareCX,shareZXW, money, note, date) VALUES (#{payPerson}, #{shareWYM}, #{shareLRH},#{shareCX}, #{shareZXW},#{money}, #{note},#{date})
+    </insert>
+
+    <delete id="deleteBill" parameterType="java.lang.Integer">
+        delete from bills where id  = #{id}
+    </delete>
+
+    <delete id="deleteAll" parameterType="java.lang.Integer">
+        delete from bills
+    </delete>
+
+    <!--<update id="editStudent" parameterType="org.system.domain.Student">-->
+        <!--UPDATE  students set name=#{name}, age=#{age}, sex=#{sex} where name = #{name}-->
+    <!--</update>-->
+
+    <!--<select id="getStudentArticles" parameterType="java.lang.String" resultMap="resultStudentArticleList">-->
+        <!--select * from students, article where students.name=#{name} and students.name=article.userName order by article.id DESC-->
+    <!--</select>-->
+
+</mapper>
