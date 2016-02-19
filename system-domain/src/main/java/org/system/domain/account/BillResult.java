@@ -12,6 +12,17 @@ public class BillResult
     private float l_Give_c;
     private float l_Give_z;
     private float c_Give_z;
+    private String date;
+
+    public String getDate()
+    {
+        return date;
+    }
+
+    public void setDate(String date)
+    {
+        this.date = date;
+    }
 
     public Integer getId()
     {
