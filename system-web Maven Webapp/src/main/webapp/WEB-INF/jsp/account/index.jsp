@@ -44,9 +44,13 @@
             <option value="刘偌含">刘偌含</option>
             <option value="陈茜">陈茜</option>
             <option value="张晓巍">张晓巍</option>
-        </select></br></br>
+        </select>
+        <span class = "payPerson">&nbsp;&nbsp;money : </span>
+        <input type="text" class = "money" style="width: 70px" >
 
-        <span class = "payPerson">share : </span></br>
+        </br></br>
+
+        <span class = "payPerson">share : </span></br></br>
         <input type="checkbox" id="wym_share" class="checkbox" >王雁鸣<br/>
         <input type="checkbox" id="lrh_share" class="checkbox" >刘偌含<br/>
         <input type="checkbox" id="cx_share" class="checkbox" >陈茜<br/>
@@ -57,11 +61,8 @@
 
         <span class = "payPerson">note : </span>
         <input type="text" class="note"><br/><br/>
-        <span class = "payPerson">money : </span>
-        <input type="text" class = "money" ><br/>
         <input type="button" value="提交" id="submit" class="btn" /><br/>
     </form>
-    <br/>
     <hr>
     <br/>
 </div>
