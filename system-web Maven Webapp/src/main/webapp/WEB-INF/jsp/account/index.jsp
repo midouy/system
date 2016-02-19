@@ -47,14 +47,16 @@
         </select></br></br>
 
         <span class = "payPerson">share : </span></br>
-        <input type="checkbox" id="wym_share" class="checkbox">王雁鸣<br/>
-        <input type="checkbox" id="lrh_share" class="checkbox">刘偌含<br/>
-        <input type="checkbox" id="cx_share" class="checkbox">陈茜<br/>
-        <input type="checkbox" id="zxw_share" class="checkbox">张晓巍<br/><br/>
-        <input type="checkbox" id="all">全选<br/><br/>
+        <input type="checkbox" id="wym_share" class="checkbox" >王雁鸣<br/>
+        <input type="checkbox" id="lrh_share" class="checkbox" >刘偌含<br/>
+        <input type="checkbox" id="cx_share" class="checkbox" >陈茜<br/>
+        <input type="checkbox" id="zxw_share" class="checkbox" >张晓巍<br/><br/>
+
+        <input type="button" value="全选选中" id="selectAll" >
+        <input type="button" value="全部取消" id="cancelAll" ><br/><br/>
 
         <span class = "payPerson">note : </span>
-        <input type="text" class="note"><br/>
+        <input type="text" class="note"><br/><br/>
         <span class = "payPerson">money : </span>
         <input type="text" class = "money" ><br/>
         <input type="button" value="提交" id="submit" class="btn" /><br/>
@@ -71,7 +73,7 @@
 </div>
 </body>
 
-<script type="text/javascript" src="${ctx}/js/jQuery.js"></script>
+<script type="text/javascript" src="${ctx}/js/jq_183.js"></script>
 
 <script>
         function addBill(){
@@ -114,15 +116,15 @@
             event.returnValue = false;
         }
     }
-    function checkSelectAll(){
-        alert("check all");
-        if($("#all").is(":checked")){
-            $(".checkbox").attr("checked",true);
-        }
-        else{
-            $(".checkbox").attr("checked",false);
-        }
-    }
+//    function checkSelectAll(){
+//        alert("check all");
+//        if($("#all").is(":checked")){
+//            $(".checkbox").attr("checked",checked);
+//        }
+//        else{
+//            $(".checkbox").attr("checked","");
+//        }
+//    }
     function deleteBill(id){
         $.ajax({
             url : "${ctx}/account/deleteBill",
@@ -150,11 +152,16 @@
                 }
             });
         }
-
 </script>
 
 <%--button active--%>
 <script>
+    function selectAll(){
+        $(".checkbox").attr("checked",true);
+    }
+    function cancelAll(){
+        $(".checkbox").removeAttr("checked");
+    }
     $(function(){
         $(".btn").click(function(){
             addBill();
@@ -162,8 +169,11 @@
     });
 
     $(function(){
-       $("#all").change(function(){
-           checkSelectAll();
+       $("#selectAll").click(function(){
+           selectAll();
+       });
+       $("#cancelAll").click(function(){
+           cancelAll();
        });
     });
 
