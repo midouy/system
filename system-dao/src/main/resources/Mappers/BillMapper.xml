@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="org.system.dao.BillDao">
+<mapper namespace="org.system.dao.account.BillDao">
 
     <resultMap id="AllBillList" type="org.system.domain.account.Bill">
         <!--column是只从数据库查到的字段名称-->

@@ -1,7 +1,7 @@
 package org.system.service.account;
 
 import org.springframework.stereotype.Service;
-import org.system.dao.BillDao;
+import org.system.dao.account.BillDao;
 import org.system.domain.account.Bill;
 import org.system.domain.account.BillResult;
 
