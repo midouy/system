@@ -1,4 +1,4 @@
-package org.system.util.mail.example;
+package org.system.commons.example.mail;
 
 /**
  * Created by wangyanming on 2015/12/28.
