@@ -19,9 +19,8 @@ import java.util.Properties;
 public class HTMLMailDemo
 {
     /**
-     * @param args
      */
-    public static void main(String[] args) throws Exception
+    public static void test() throws Exception
     {
         JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
 

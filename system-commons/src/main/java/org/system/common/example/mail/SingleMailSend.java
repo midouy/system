@@ -17,7 +17,7 @@ import java.util.Properties;
  */
 public class SingleMailSend
 {
-    public static void main(String args[])
+    public static void test()
     {
         JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
         // 设定mail server

@@ -17,9 +17,8 @@ public class AttachedFileMail
     /**
      * 本类测试的是关于邮件中带有附件的例子
      *
-     * @param args
      */
-    public static void main(String[] args) throws Exception
+    public static void test() throws Exception
     {
         JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
 

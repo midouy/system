@@ -20,7 +20,7 @@ import java.util.Properties;
  */
 public class AttachedImageMail
 {
-    public static void main(String[] args) throws Exception
+    public static void test() throws Exception
     {
         JavaMailSenderImpl senderImpl = new JavaMailSenderImpl();
 
