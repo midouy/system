@@ -1,4 +1,4 @@
-package org.system.util.account;
+package org.system.common.context.account;
 
 /**
  * Created by wangyanming on 2016/2/3.

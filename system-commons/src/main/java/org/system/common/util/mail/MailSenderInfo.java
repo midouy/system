@@ -1,4 +1,4 @@
-package org.system.util.mail;
+package org.system.common.util.mail;
 
 /**
  * Created by wangyanming on 2015/12/28.
