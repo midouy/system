@@ -1,12 +1,13 @@
-package org.system.commons.example.mail;
+package org.system.common.example.mail;
 
 /**
  * Created by wangyanming on 2015/12/28.
  */
-import java.util.Properties;
 
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+
+import java.util.Properties;
 
 /**
  * 本类测试简单邮件 直接用邮件发送

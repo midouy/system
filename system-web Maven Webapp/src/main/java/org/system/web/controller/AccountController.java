@@ -1,19 +1,17 @@
 package org.system.web.controller;
 
-import org.omg.CORBA.Request;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.system.common.example.mail.HTMLMailDemo;
 import org.system.domain.account.Bill;
 import org.system.domain.account.BillResult;
 import org.system.service.account.AccountService;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -28,10 +26,11 @@ public class AccountController
     private AccountService accountService;
 
     @RequestMapping("/index")
-    public String index(Model model){
+    public String index(Model model)throws Exception{
         List<Bill> list = list();
         List<String> result = calculate();
 
+        HTMLMailDemo.main(new String[]{});
         model.addAttribute("list",list);
         model.addAttribute("result",result);
         return "account/index";

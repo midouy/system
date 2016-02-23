@@ -1,13 +1,14 @@
-package org.system.commons.example.mail;
+package org.system.common.example.mail;
 
 /**
  * Created by wangyanming on 2015/12/28.
  */
-import java.util.Properties;
 
-import javax.mail.internet.MimeMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
+
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 
 /**
  * 本类测试html邮件
