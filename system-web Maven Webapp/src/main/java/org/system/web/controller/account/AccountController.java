@@ -1,4 +1,4 @@
-package org.system.web.controller;
+package org.system.web.controller.account;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,7 +30,6 @@ public class AccountController
         List<Bill> list = list();
         List<String> result = calculate();
 
-        HTMLMailDemo.main(new String[]{});
         model.addAttribute("list",list);
         model.addAttribute("result",result);
         return "account/index";
