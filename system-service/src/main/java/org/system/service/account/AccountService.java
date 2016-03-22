@@ -1,5 +1,6 @@
 package org.system.service.account;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.system.dao.account.BillDao;
 import org.system.domain.account.Bill;
@@ -19,6 +20,7 @@ public class AccountService
 {
     @Resource
     private BillDao billDao;
+    private Logger logger = Logger.getLogger(AccountService.class);
 
     public Map<String , Object> addBill(Bill bill){
         Date date=new Date();
@@ -49,6 +51,7 @@ public class AccountService
     }
 
     public BillResult calculate(){
+        this.logger.info("Bills are getting calculating ! ");
         List<Bill> allBill = list();
         BillResult result = new BillResult();
         float [][] moneys = new float [4][4];

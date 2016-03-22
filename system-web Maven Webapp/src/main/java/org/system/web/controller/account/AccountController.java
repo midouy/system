@@ -1,11 +1,11 @@
 package org.system.web.controller.account;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.system.common.example.mail.HTMLMailDemo;
 import org.system.domain.account.Bill;
 import org.system.domain.account.BillResult;
 import org.system.service.account.AccountService;
@@ -24,12 +24,13 @@ public class AccountController
 {
     @Resource
     private AccountService accountService;
+    private Logger logger = Logger.getLogger(getClass());
 
     @RequestMapping("/index")
     public String index(Model model)throws Exception{
         List<Bill> list = list();
         List<String> result = calculate();
-
+        logger.info("Account controller Enter !");
         model.addAttribute("list",list);
         model.addAttribute("result",result);
         return "account/index";
