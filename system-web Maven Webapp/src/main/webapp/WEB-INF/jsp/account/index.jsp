@@ -117,15 +117,6 @@
             event.returnValue = false;
         }
     }
-//    function checkSelectAll(){
-//        alert("check all");
-//        if($("#all").is(":checked")){
-//            $(".checkbox").attr("checked",checked);
-//        }
-//        else{
-//            $(".checkbox").attr("checked","");
-//        }
-//    }
     function deleteBill(id){
         $.ajax({
             url : "${ctx}/account/deleteBill",
