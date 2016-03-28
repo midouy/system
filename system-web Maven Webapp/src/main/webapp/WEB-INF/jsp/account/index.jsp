@@ -28,7 +28,7 @@
             <c:if test="${item.shareLRH}">刘偌含 </c:if>
             <c:if test="${item.shareCX}">陈茜 </c:if>
             <c:if test="${item.shareZXW}">张晓巍 </c:if>
-            )<span>
+            )</span>
             --${item.note }
             <input type="button" value="删除" id="${item.id }" class="delete" onclick="deleteBill(${item.id })"/>
             <br/><br/>
