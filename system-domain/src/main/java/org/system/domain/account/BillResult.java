@@ -96,38 +96,38 @@ public class BillResult
 
     public String decode_WL(){
         if(this.getW_Give_l()>=0)
-            return "王雁鸣 给 刘偌含 "+this.getW_Give_l()+" 元";
+            return "王雁鸣   给   刘偌含   "+this.getW_Give_l()+" 元";
         else
-            return "刘偌含 给 王雁鸣 "+(this.getW_Give_l()*(-1))+" 元";
+            return "刘偌含   给   王雁鸣   "+(this.getW_Give_l()*(-1))+" 元";
     }
     public String decode_WC(){
         if(this.getW_Give_c()>=0)
-            return "王雁鸣 给 陈茜 "+this.getW_Give_c()+" 元";
+            return "王雁鸣   给   陈   茜   "+this.getW_Give_c()+" 元";
         else
-            return "陈茜 给 王雁鸣 "+(this.getW_Give_c()*(-1))+" 元";
+            return "陈   茜   给   王雁鸣   "+(this.getW_Give_c()*(-1))+" 元";
     }
     public String decode_WZ(){
         if(this.getW_Give_z()>=0)
-            return "王雁鸣 给 张晓巍 "+this.getW_Give_z()+" 元";
+            return "王雁鸣   给   张晓巍   "+this.getW_Give_z()+" 元";
         else
-            return "张晓巍 给 王雁鸣 "+(this.getW_Give_z()*(-1))+" 元";
+            return "张晓巍   给   王雁鸣   "+(this.getW_Give_z()*(-1))+" 元";
     }
     public String decode_LC(){
         if(this.getL_Give_c()>=0)
-            return "刘偌含 给 陈茜 "+this.getL_Give_c()+" 元";
+            return "刘偌含   给   陈   茜   "+this.getL_Give_c()+" 元";
         else
-            return "陈茜 给 刘偌含 "+(this.getL_Give_c()*(-1))+" 元";
+            return "陈   茜   给   刘偌含   "+(this.getL_Give_c()*(-1))+" 元";
     }
     public String decode_LZ(){
         if(this.getL_Give_z()>=0)
-            return "刘偌含 给 张晓巍 "+this.getL_Give_z()+" 元";
+            return "刘偌含   给   张晓巍   "+this.getL_Give_z()+" 元";
         else
-            return "张晓巍 给 刘偌含 "+(this.getL_Give_z()*(-1))+" 元";
+            return "张晓巍   给   刘偌含   "+(this.getL_Give_z()*(-1))+" 元";
     }
     public String decode_CZ(){
         if(this.getC_Give_z()>=0)
-            return "陈茜 给 张晓巍 "+this.getC_Give_z()+" 元";
+            return "陈   茜   给  张晓巍   "+this.getC_Give_z()+" 元";
         else
-            return "张晓巍 给 陈茜 "+(this.getC_Give_z()*(-1))+" 元";
+            return "张晓巍   给   陈   茜   "+(this.getC_Give_z()*(-1))+" 元";
     }
 }
