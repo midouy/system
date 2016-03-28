@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.system.common.util.math.Calculater;
 import org.system.domain.account.Bill;
 import org.system.domain.account.BillResult;
 import org.system.service.account.AccountService;
@@ -42,7 +43,9 @@ public class AccountController
     boolean shareCX, boolean shareZXW,String money, String note ){
         float m = 0;
         try {
-            m = Float.parseFloat(money);
+//            money = Calculater.doCalculate(money);
+            m = Float.parseFloat(Calculater.doCalculate(money));
+//            m = Float.parseFloat(money);
             System.out.println(money);
             System.out.println(m);
         }catch (Exception e){
