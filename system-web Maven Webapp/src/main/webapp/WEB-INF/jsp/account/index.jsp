@@ -51,20 +51,20 @@
             <span class="payPerson">&nbsp;&nbsp;money : </span>
             <input type="text" class="money" style="width: 200px">
 
+            <span class="payPerson">note : </span>
+            <input type="text" class="note">
+
             </br></br>
 
             <span class="payPerson">share : </span></br></br>
-            <input type="checkbox" id="wym_share" class="checkbox">王雁鸣<br/>
-            <input type="checkbox" id="lrh_share" class="checkbox">刘偌含<br/>
-            <input type="checkbox" id="cx_share" class="checkbox">陈茜<br/>
+            <input type="checkbox" id="wym_share" class="checkbox">王雁鸣<br/><br/>
+            <input type="checkbox" id="lrh_share" class="checkbox">刘偌含<br/><br/>
+            <input type="checkbox" id="cx_share" class="checkbox">陈茜<br/><br/>
             <input type="checkbox" id="zxw_share" class="checkbox">张晓巍<br/><br/>
 
             <input type="button" value="全选选中" id="selectAll">
-            <input type="button" value="全部取消" id="cancelAll"><br/><br/>
-
-            <span class="payPerson">note : </span>
-            <input type="text" class="note"><br/><br/>
-            <input type="button" value="提交" id="submit" class="btn"/><br/>
+            <input type="button" value="全部取消" id="cancelAll">
+            <input type="button" value="提交" id="submit" class="btn" style="width: 80px"/><br/>
         </form>
         <br/>
     </div>
@@ -136,16 +136,21 @@
         });
     }
     function deleteAll() {
-        $.ajax({
-            url: "${ctx}/account/deleteAll",
-            dataType: "json",
-            type: "post",
-            data: {},
-            success: function (data) {
-                alert("Bill delete success ! ");
-                location.reload();
-            }
-        });
+        if (confirm("确定删除所有？")) {
+            $.ajax({
+                url: "${ctx}/account/deleteAll",
+                dataType: "json",
+                type: "post",
+                data: {},
+                success: function (data) {
+                    alert("Bill delete success ! ");
+                    location.reload();
+                }
+            });
+        }
+        else {
+//            alert("点击了取消");
+        }
     }
 </script>
 
