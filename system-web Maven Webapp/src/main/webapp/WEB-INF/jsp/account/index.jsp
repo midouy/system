@@ -46,7 +46,7 @@
             <option value="张晓巍">张晓巍</option>
         </select>
         <span class = "payPerson">&nbsp;&nbsp;money : </span>
-        <input type="text" class = "money" style="width: 70px" >
+        <input type="text" class = "money" style="width: 200px" >
 
         </br></br>
 
