@@ -2,16 +2,16 @@ package org.system.service.accountX;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.system.dao.accountX.AccountPaymentDao;
+import org.system.dao.accountX.AccountXPaymentDao;
 import org.system.dao.accountX.AccountXBillDao;
 import org.system.dao.accountX.AccountXUserDao;
 import org.system.domain.accountX.AccountXBill;
 import org.system.domain.accountX.AccountXPayment;
 import org.system.domain.accountX.AccountXUser;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Midouy on 2016/3/28.
@@ -22,10 +22,10 @@ public class AccountXService
 
     @Autowired
     private AccountXBillDao accountXBillDao;
-    //
+
     @Autowired
-    private AccountPaymentDao accountPaymentDao;
-    //
+    private AccountXPaymentDao accountXPaymentDao;
+
     @Autowired
     private AccountXUserDao accountXUserDao;
 
@@ -46,7 +46,7 @@ public class AccountXService
 
     private List<AccountXPayment> initPaymentResult()
     {
-        List<AccountXPayment> allPayments = accountPaymentDao.getAllPayment();
+        List<AccountXPayment> allPayments = accountXPaymentDao.getAllPayment();
         List<AccountXPayment> results = initNullResult();
         mergePayment(results, allPayments);
         return results;
@@ -79,15 +79,71 @@ public class AccountXService
 //                    allPayments.remove(payment);
                 }
             }
-            if(resultItem.getMoney()<0){
+            if (resultItem.getMoney() < 0)
+            {
                 resultItem.format();
             }
         }
     }
 
-    public void show(List data){
-        for(Object object : data){
+    public void show(List data)
+    {
+        System.out.println("show ... ");
+        for (Object object : data)
+        {
             System.out.println(object.toString());
         }
+    }
+
+    public void show(Set data)
+    {
+        for (Object object : data)
+        {
+            System.out.println(object.toString());
+        }
+    }
+
+    public void show(Object[] data)
+    {
+        System.out.println("show ... ");
+        for (Object object : data)
+        {
+            System.out.println(object.toString());
+        }
+    }
+
+//    @Transactional(rollbackFor = Exception.class)
+    public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
+    {
+        accountXBillDao.insertNewBill(accountXBill);
+
+        accountXBill = accountXBillDao.getBillByTime(accountXBill.getDate());
+        System.out.println(accountXBill);
+        float money = accountXBill.getMoney() / shares.length;
+        for (String username : shares)
+        {
+            if (username.equals(accountXBill.getPayer()))
+                continue;
+            AccountXPayment accountXPayment = new AccountXPayment(accountXBill.getId(), username, accountXBill.getPayer(), money);
+            System.out.println(accountXPayment);
+            accountXPaymentDao.insertNewPayment(accountXPayment);
+        }
+        return successResult(" Bill insert success ! ");
+    }
+
+    public Map<String, Object> successResult(String msg)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("success", true);
+        result.put("message", msg);
+        return result;
+    }
+
+    public Map<String, Object> failResult(String msg)
+    {
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("success", false);
+        result.put("message", msg);
+        return result;
     }
 }

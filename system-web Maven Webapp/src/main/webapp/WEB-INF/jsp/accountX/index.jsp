@@ -21,7 +21,7 @@
             <hr/><br/>
             <form>
                 <span class="payPerson">pay : </span>
-                <select class="names">
+                <select id="payer">
                     <option value="default">请选择付款人</option>
                     <c:forEach items="${allUsers }" var="item">
                         <option value="${item.name }">${item.name }</option>
@@ -29,26 +29,29 @@
                 </select>
 
                 <span class="payPerson">&nbsp;&nbsp;money : </span>
-                <input type="text" class="money" style="width: 200px">
+                <input type="text" id="money" style="width: 200px">
 
                 <span class="payPerson">note : </span>
-                <input type="text" class="note">
+                <input type="text" id="note">
 
                 </br></br>
 
                 <span class="payPerson">share : </span></br></br>
                 <c:forEach items="${allUsers }" var="item">
-                    <input type="checkbox" id="${item.shortName }_share" class="checkbox">${item.name }<br/><br/>
+                    <input type="checkbox" id="${item.name }" class="checkbox">${item.name }<br/><br/>
                 </c:forEach>
 
                 <input type="button" value="全选选中" id="selectAll">
                 <input type="button" value="全部取消" id="cancelAll">
-                <input type="button" value="提交" id="submit" class="btn" style="width: 80px"/><br/>
+                <input type="button" value="提交"  id="add_bill_btn" style="width: 80px"/><br/>
             </form>
 
         </div>
         <div class="results">
             <hr/><br/>
+            <c:forEach items="${allPayments }" var="item">
+                 ${item.from }  ---给---  ${item.to }  ---  ${item.money } <br/><br/>
+            </c:forEach>
         </div>
         <div class="all_bills">
             <hr/><br/>
@@ -58,4 +61,110 @@
         </div>
     </div>
 </body>
+
+<script type="text/javascript" src="${ctx}/js/jq_183.js"></script>
+
+<script>
+    function addBill() {
+        var payer = $("#payer").val();
+        var money = $("#money").val();
+        var note = $("#note").val();
+        var shares = initShares();
+        var sharesData = shares.join("@");
+
+        $.ajax({
+            url: "${ctx}/accountX/addBill",
+            dataType: "json",
+            type: "post",
+            data: {
+                sharesData: sharesData,
+                payer: payer,
+                money: money,
+                note: note
+            },
+            success: function (data) {
+                if (data.success) {
+                    alert("Bill add success !!! ");
+                } else {
+                    alert("Bill add fail !!! ");
+                }
+                location.reload();
+            }
+        });
+    };
+
+    function initShares(){
+        var result = [];
+        $(".checkbox").each(function(){
+            if($(this).is(':checked')){
+                result.push($(this).attr("id"));
+            }
+        });
+        return result;
+    }
+//    function checkMoney() {
+//        var keyCode = event.keyCode;
+//        if ((keyCode >= 48 && keyCode <= 57)) {
+//            event.returnValue = true;
+//        } else {
+//            event.returnValue = false;
+//        }
+//    }
+    <%--function deleteBill(id) {--%>
+        <%--$.ajax({--%>
+            <%--url: "${ctx}/account/deleteBill",--%>
+            <%--dataType: "json",--%>
+            <%--type: "post",--%>
+            <%--data: {--%>
+                <%--id: id--%>
+            <%--},--%>
+            <%--success: function (data) {--%>
+                <%--alert("Bill delete success ! ");--%>
+                <%--location.reload();--%>
+            <%--}--%>
+        <%--});--%>
+    <%--}--%>
+    <%--function deleteAll() {--%>
+        <%--if (confirm("确定删除所有？")) {--%>
+            <%--$.ajax({--%>
+                <%--url: "${ctx}/account/deleteAll",--%>
+                <%--dataType: "json",--%>
+                <%--type: "post",--%>
+                <%--data: {},--%>
+                <%--success: function (data) {--%>
+                    <%--alert("Bill delete success ! ");--%>
+                    <%--location.reload();--%>
+                <%--}--%>
+            <%--});--%>
+        <%--}--%>
+        <%--else {--%>
+<%--//            alert("点击了取消");--%>
+        <%--}--%>
+    <%--}--%>
+</script>
+
+<%--button active--%>
+<script>
+    function selectAll() {
+        $(".checkbox").attr("checked", true);
+    }
+    function cancelAll() {
+        $(".checkbox").removeAttr("checked");
+    }
+    $(function () {
+        $("#add_bill_btn").click(function () {
+            addBill();
+        });
+    });
+
+    $(function () {
+        $("#selectAll").click(function () {
+            selectAll();
+        });
+        $("#cancelAll").click(function () {
+            cancelAll();
+        });
+    });
+
+</script>
 </html>

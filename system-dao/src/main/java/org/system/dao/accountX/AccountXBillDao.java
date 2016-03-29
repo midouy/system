@@ -15,8 +15,8 @@ public interface AccountXBillDao
 //
 //    Integer deleteAllBills();
 //
-//    void insertNewBill(AccountXBill bill);
+    void insertNewBill(AccountXBill bill);
 //
-//    AccountXBill getBillByUser();
+    AccountXBill getBillByTime(String date);
 
 }

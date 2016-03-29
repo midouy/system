@@ -11,6 +11,18 @@ public class AccountXBill
     private String date ;
     private String note;
 
+    public AccountXBill(){
+
+    }
+
+    public AccountXBill(String payer, float money, String date, String note)
+    {
+        this.payer = payer;
+        this.money = money;
+        this.date = date;
+        this.note = note;
+    }
+
     public Integer getId()
     {
         return id;

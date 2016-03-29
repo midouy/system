@@ -8,7 +8,8 @@ import java.util.List;
 /**
  * Created by Midouy on 2016/3/28.
  */
-public interface AccountPaymentDao
+public interface AccountXPaymentDao
 {
     List<AccountXPayment> getAllPayment();
+    Integer insertNewPayment(AccountXPayment accountXPayment);
 }

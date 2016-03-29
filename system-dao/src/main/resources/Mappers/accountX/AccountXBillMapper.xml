@@ -20,4 +20,13 @@
         select * from accountx_bill
     </select>
 
+    <select id="getBillByTime" resultType="org.system.domain.accountX.AccountXBill" parameterType="java.lang.String">
+        select * from accountx_bill where date = #{date}
+    </select>
+
+    <insert id="insertNewBill" parameterType="org.system.domain.accountX.AccountXBill">
+        INSERT into accountx_bill (payer,money,date,note)
+        VALUES (#{payer}, #{money}, #{date}, #{note})
+    </insert>
+
 </mapper>

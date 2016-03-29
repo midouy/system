@@ -23,6 +23,14 @@ public class AccountXPayment
         this.money = 0;
     }
 
+    public AccountXPayment(Integer billId, String from, String to, float money)
+    {
+        this.billId = billId;
+        this.from = from;
+        this.to = to;
+        this.money = money;
+    }
+
     public Integer getId()
     {
         return id;
