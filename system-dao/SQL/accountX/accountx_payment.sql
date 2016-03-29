@@ -24,6 +24,6 @@ CREATE TABLE `accountx_payment` (
   `bill_id` int(11) DEFAULT NULL,
   `from_user` varchar(255) DEFAULT NULL,
   `to_user` varchar(255) DEFAULT NULL,
-  `money` float(255,20) DEFAULT NULL,
+  `money` float(255,5) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
