@@ -1,4 +1,4 @@
-package org.system.dao.accoutX;
+package org.system.dao.accountX;
 
 import org.system.domain.accountX.AccountXBill;
 
