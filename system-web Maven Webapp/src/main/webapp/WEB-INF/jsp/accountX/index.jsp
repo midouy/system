@@ -19,7 +19,32 @@
     <div class="main">
         <div class="add_bill">
             <hr/><br/>
+            <form>
+                <span class="payPerson">pay : </span>
+                <select class="names">
+                    <option value="default">请选择付款人</option>
+                    <c:forEach items="${allUsers }" var="item">
+                        <option value="${item.name }">${item.name }</option>
+                    </c:forEach>
+                </select>
 
+                <span class="payPerson">&nbsp;&nbsp;money : </span>
+                <input type="text" class="money" style="width: 200px">
+
+                <span class="payPerson">note : </span>
+                <input type="text" class="note">
+
+                </br></br>
+
+                <span class="payPerson">share : </span></br></br>
+                <c:forEach items="${allUsers }" var="item">
+                    <input type="checkbox" id="${item.shortName }_share" class="checkbox">${item.name }<br/><br/>
+                </c:forEach>
+
+                <input type="button" value="全选选中" id="selectAll">
+                <input type="button" value="全部取消" id="cancelAll">
+                <input type="button" value="提交" id="submit" class="btn" style="width: 80px"/><br/>
+            </form>
 
         </div>
         <div class="results">
