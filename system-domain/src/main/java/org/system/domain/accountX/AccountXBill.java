@@ -6,7 +6,7 @@ package org.system.domain.accountX;
 public class AccountXBill
 {
     private Integer id;
-    private AccountXUser payer;
+    private String payer;
     private float money;
     private String date ;
     private String note;
@@ -21,12 +21,12 @@ public class AccountXBill
         this.id = id;
     }
 
-    public AccountXUser getPayer()
+    public String getPayer()
     {
         return payer;
     }
 
-    public void setPayer(AccountXUser payer)
+    public void setPayer(String payer)
     {
         this.payer = payer;
     }

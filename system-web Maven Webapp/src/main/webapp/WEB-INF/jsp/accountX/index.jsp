@@ -52,6 +52,9 @@
         </div>
         <div class="all_bills">
             <hr/><br/>
+            <c:forEach items="${allBills }" var="item">
+                ${item.id }  ---  ${item.payer }  ---  ${item.money }  ---  ${item.date }  ---  ${item.note }<br/><br/>
+            </c:forEach>
         </div>
     </div>
 </body>
