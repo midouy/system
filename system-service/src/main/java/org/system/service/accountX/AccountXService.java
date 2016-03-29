@@ -69,6 +69,8 @@ public class AccountXService
 
     private void mergePayment(List<AccountXPayment> results, List<AccountXPayment> allPayments)
     {
+        show(allPayments);
+        show(results);
         for (AccountXPayment resultItem : results)
         {
             for (AccountXPayment payment : allPayments)
@@ -144,6 +146,20 @@ public class AccountXService
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("success", false);
         result.put("message", msg);
+        return result;
+    }
+
+    public Map<String, Object>deleteBillById(Integer id){
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("bill_delete_Result",accountXBillDao.DeleteBillById(id));
+        result.put("payment_delete_Result",accountXPaymentDao.deletePaymentByBillId(id));
+        return result;
+    }
+
+    public Map<String, Object>deleteAll(){
+        Map<String, Object> result = new HashMap<String, Object>();
+        result.put("bill_delete_Result",accountXBillDao.deleteAllBills());
+        result.put("payment_delete_Result",accountXPaymentDao.deleteAllPayment());
         return result;
     }
 }

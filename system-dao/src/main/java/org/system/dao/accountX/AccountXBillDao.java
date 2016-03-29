@@ -11,9 +11,9 @@ public interface AccountXBillDao
 {
     List<AccountXBill> getAllBills();
 
-//    Integer DeleteBillById(Integer id);
+    Integer DeleteBillById(Integer id);
 //
-//    Integer deleteAllBills();
+    Integer deleteAllBills();
 //
     void insertNewBill(AccountXBill bill);
 //

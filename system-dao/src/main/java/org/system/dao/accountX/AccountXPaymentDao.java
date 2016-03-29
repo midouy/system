@@ -11,5 +11,10 @@ import java.util.List;
 public interface AccountXPaymentDao
 {
     List<AccountXPayment> getAllPayment();
+
     Integer insertNewPayment(AccountXPayment accountXPayment);
+
+    Integer deletePaymentByBillId(Integer id);
+
+    Integer deleteAllPayment();
 }

@@ -29,4 +29,12 @@
         VALUES (#{payer}, #{money}, #{date}, #{note})
     </insert>
 
+    <delete id="DeleteBillById" parameterType="java.lang.Integer">
+        delete from accountx_bill where id  = #{id}
+    </delete>
+
+    <delete id="deleteAllBills">
+        delete from accountx_bill
+    </delete>
+
 </mapper>

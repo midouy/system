@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.system.common.util.math.Calculater;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
-
-import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -20,18 +18,22 @@ import java.util.*;
  */
 @Controller
 @RequestMapping("/accountX")
-public class AccountXController {
+public class AccountXController
+{
 
     @Autowired
     private AccountXService accountXService;
 
     @RequestMapping("/index")
-    public String index(Model model){
-        try{
+    public String index(Model model)
+    {
+        try
+        {
             accountXService.initPage(model);
-        }catch (Exception e){
+        } catch (Exception e)
+        {
             e.printStackTrace();
-            model.addAttribute("msg" , "页面初始化错误");
+            model.addAttribute("msg", "页面初始化错误");
             return "accountX/Error";
         }
         return "accountX/index";
@@ -39,23 +41,43 @@ public class AccountXController {
 
     @RequestMapping(value = "/addBill", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String , Object> addBill(String sharesData, String payer, String money, String note){
+    public Map<String, Object> addBill(String sharesData, String payer, String money, String note)
+    {
         float m = 0;
-        try {
+        try
+        {
+            if(money==null||money.equals("")){
+                return accountXService.failResult("金额格式不正确 !");
+            }
             m = Float.parseFloat(Calculater.doCalculate(money));
-            Date date=new Date();
-            DateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-            String time=format.format(date);
+            Date date = new Date();
+            DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String time = format.format(date);
 
 //            System.out.println(sharesData);
-            String [] sharesArray = sharesData.split("@");
+            String[] sharesArray = sharesData.split("@");
             accountXService.show(sharesArray);
-            AccountXBill accountXBill = new AccountXBill(payer, m, time, note);
-            return accountXService.insertNewBill(accountXBill,sharesArray);
-        }catch (Exception e){
+            AccountXBill accountXBill = new AccountXBill(payer, m, time, note + "( " + sharesData.replaceAll("@", "  ") + " )");
+            return accountXService.insertNewBill(accountXBill, sharesArray);
+        } catch (Exception e)
+        {
             e.printStackTrace();
         }
-        return accountXService.failResult(" Bill insert Fail !");
+        return accountXService.failResult(" 金额格式不正确 !");
+    }
+
+    @RequestMapping("/deleteBill")
+    @ResponseBody
+    public Map<String, Object> deleteBill(Integer id)
+    {
+        return accountXService.deleteBillById(id);
+    }
+
+    @RequestMapping("/deleteAll")
+    @ResponseBody
+    public Map<String, Object> deleteAll()
+    {
+        return accountXService.deleteAll();
     }
 
 }

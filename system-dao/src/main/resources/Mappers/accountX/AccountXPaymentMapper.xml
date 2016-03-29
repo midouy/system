@@ -11,8 +11,8 @@
         <!--一般情况下, 这种map的目的在于隐藏数据库中的不想对外显示的数据, 并且需要建立新的类去封装这些需要显示的数据-->
         <result column="id" property="id"/>
         <result column="bill_id" property="billId"/>
-        <result column="from" property="from_user"/>
-        <result column="to" property="to_user"/>
+        <result column="from_user" property="from"/>
+        <result column="to_user" property="to"/>
         <result column="money" property="money"/>
     </resultMap>
 
@@ -24,5 +24,13 @@
         INSERT into accountx_payment (bill_id,from_user,to_user,money)
         VALUES (#{billId}, #{from}, #{to}, #{money})
     </insert>
+
+    <delete id="deletePaymentByBillId" parameterType="java.lang.Integer">
+        delete from accountx_payment where bill_id  = #{id}
+    </delete>
+
+    <delete id="deleteAllPayment">
+        delete from accountx_payment
+    </delete>
 
 </mapper>

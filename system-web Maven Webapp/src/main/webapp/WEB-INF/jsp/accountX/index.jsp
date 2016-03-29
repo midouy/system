@@ -56,8 +56,11 @@
         <div class="all_bills">
             <hr/><br/>
             <c:forEach items="${allBills }" var="item">
-                ${item.id }  ---  ${item.payer }  ---  ${item.money }  ---  ${item.date }  ---  ${item.note }<br/><br/>
+                ${item.id }  ---  ${item.payer }  ---  ${item.money }  ---  ${item.date }  ---  ${item.note }
+                <input type="button" value="删除" id="${item.id }" class="delete" onclick="deleteBill(${item.id })"/>
+                <br/><br/>
             </c:forEach>
+            <input type="button" value="删除全部" onclick="deleteAll()"/>
         </div>
     </div>
 </body>
@@ -70,6 +73,16 @@
         var money = $("#money").val();
         var note = $("#note").val();
         var shares = initShares();
+
+        if(payer=='default'){
+            alert("付款人不能为空 !")
+            return;
+        }
+        if(shares.length<=0){
+            alert("至少选择一个人 ! ");
+            return;
+        }
+
         var sharesData = shares.join("@");
 
         $.ajax({
@@ -102,45 +115,38 @@
         });
         return result;
     }
-//    function checkMoney() {
-//        var keyCode = event.keyCode;
-//        if ((keyCode >= 48 && keyCode <= 57)) {
-//            event.returnValue = true;
-//        } else {
-//            event.returnValue = false;
-//        }
-//    }
-    <%--function deleteBill(id) {--%>
-        <%--$.ajax({--%>
-            <%--url: "${ctx}/account/deleteBill",--%>
-            <%--dataType: "json",--%>
-            <%--type: "post",--%>
-            <%--data: {--%>
-                <%--id: id--%>
-            <%--},--%>
-            <%--success: function (data) {--%>
-                <%--alert("Bill delete success ! ");--%>
-                <%--location.reload();--%>
-            <%--}--%>
-        <%--});--%>
-    <%--}--%>
-    <%--function deleteAll() {--%>
-        <%--if (confirm("确定删除所有？")) {--%>
-            <%--$.ajax({--%>
-                <%--url: "${ctx}/account/deleteAll",--%>
-                <%--dataType: "json",--%>
-                <%--type: "post",--%>
-                <%--data: {},--%>
-                <%--success: function (data) {--%>
-                    <%--alert("Bill delete success ! ");--%>
-                    <%--location.reload();--%>
-                <%--}--%>
-            <%--});--%>
-        <%--}--%>
-        <%--else {--%>
-<%--//            alert("点击了取消");--%>
-        <%--}--%>
-    <%--}--%>
+
+    function deleteBill(id) {
+        $.ajax({
+            url: "${ctx}/accountX/deleteBill",
+            dataType: "json",
+            type: "post",
+            data: {
+                id: id
+            },
+            success: function (data) {
+                alert("Bill delete success ! ");
+                location.reload();
+            }
+        });
+    }
+    function deleteAll() {
+        if (confirm("确定删除所有？")) {
+            $.ajax({
+                url: "${ctx}/accountX/deleteAll",
+                dataType: "json",
+                type: "post",
+                data: {},
+                success: function (data) {
+                    alert("Bill delete success ! ");
+                    location.reload();
+                }
+            });
+        }
+        else {
+//            alert("点击了取消");
+        }
+    }
 </script>
 
 <%--button active--%>
