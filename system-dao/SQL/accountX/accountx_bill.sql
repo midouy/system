@@ -22,7 +22,7 @@ DROP TABLE IF EXISTS `accountx_bill`;
 CREATE TABLE `accountx_bill` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `payer` varchar(255) DEFAULT NULL,
-  `money` float(255,0) DEFAULT NULL,
+  `money` float(255,20) DEFAULT NULL,
   `date` datetime DEFAULT NULL,
   `note` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)

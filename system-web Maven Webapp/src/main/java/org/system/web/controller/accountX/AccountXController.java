@@ -53,10 +53,9 @@ public class AccountXController
             Date date = new Date();
             DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String time = format.format(date);
-
-//            System.out.println(sharesData);
             String[] sharesArray = sharesData.split("@");
-            accountXService.show(sharesArray);
+
+            System.out.println(m);
             AccountXBill accountXBill = new AccountXBill(payer, m, time, note + "( " + sharesData.replaceAll("@", "  ") + " )");
             return accountXService.insertNewBill(accountXBill, sharesArray);
         } catch (Exception e)
