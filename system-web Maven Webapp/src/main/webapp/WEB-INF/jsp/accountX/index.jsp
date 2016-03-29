@@ -31,8 +31,8 @@
                 <span class="payPerson">&nbsp;&nbsp;money : </span>
                 <input type="text" id="money" style="width: 200px">
 
-                <span class="payPerson">note : </span>
-                <input type="text" id="note">
+                <span class="payPerson" >note : </span>
+                <input type="text" id="note" style="width: 200px">
 
                 </br></br>
 
