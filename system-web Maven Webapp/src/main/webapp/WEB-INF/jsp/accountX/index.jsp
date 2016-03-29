@@ -49,18 +49,32 @@
         </div>
         <div class="results">
             <hr/><br/>
-            <c:forEach items="${allPayments }" var="item">
-                 ${item.from }  ---给---  ${item.to }  ---  ${item.money } <br/><br/>
-            </c:forEach>
+            <table>
+                <c:forEach items="${allPayments }" var="item">
+                    <tr class="tr_row">
+                        <td class="td_pay">${item.from }</td>
+                        <td class="td_id">给</td>
+                        <td class="td_pay">${item.to }</td>
+                        <td class="td_pay">${item.money } </td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
         <div class="all_bills">
             <hr/><br/>
-            <c:forEach items="${allBills }" var="item">
-                ${item.id }  ---  ${item.payer }  ---  ${item.money }  ---  ${item.date }  ---  ${item.note }
-                <input type="button" value="删除" id="${item.id }" class="delete" onclick="deleteBill(${item.id })"/>
-                <br/><br/>
-            </c:forEach>
-            <input type="button" value="删除全部" onclick="deleteAll()"/>
+            <div class="tr_row"><input  type="button" value="删除全部" onclick="deleteAll()"/></div>
+            <table>
+                <c:forEach items="${allBills }" var="item">
+                    <tr class="tr_row">
+                        <td class="td_id">${item.id }</td>
+                        <td class="td_pay">${item.payer }</td>
+                        <td class="td_money">${item.money }</td>
+                        <td class="td_date">${item.date }</td>
+                        <td class="td_note">${item.note }</td>
+                        <td><input type="button" value="删除" id="${item.id }" class="delete" style="width: 80px" onclick="deleteBill(${item.id })"/></td>
+                    </tr>
+                </c:forEach>
+            </table>
         </div>
     </div>
 </body>
