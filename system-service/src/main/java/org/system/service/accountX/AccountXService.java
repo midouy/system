@@ -2,6 +2,7 @@ package org.system.service.accountX;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.system.common.response.ResponseUtil;
@@ -100,11 +101,14 @@ public class AccountXService
         return result;
     }
 
+    @Transactional
     public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
     {
         accountXBillDao.insertNewBill(accountXBill);
         accountXBill = accountXBillDao.getBillByTime(accountXBill.getDate());
         System.out.println(accountXBill);
+        if(accountXBill!=null)
+            throw new RuntimeException();
         float money = accountXBill.getMoney() / shares.length;
         for (String username : shares)
         {
