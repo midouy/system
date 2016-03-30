@@ -62,15 +62,17 @@ public class AccountXService
         List<AccountXRecord> allRecords = accountXRecordDao.getAllRecord();
         List<AccountXPayLog> allPayLogs = accountXPayLogDao.getPayLogByRecordId(recordId);
         List<AccountXBill> allBillLogs = accountXBillDao.getBillsLogByRecordId(recordId);
-
+        AccountXRecord record = accountXRecordDao.getRecordById(recordId);
 
         DataShower.show(allRecords);
         DataShower.show(allPayLogs);
         DataShower.show(allBillLogs);
+        DataShower.show(record);
 
         model.addAttribute("allRecords",allRecords);
         model.addAttribute("allPayLogs",allPayLogs);
         model.addAttribute("allBillLogs",allBillLogs);
+        model.addAttribute("record",record);
     }
 
     private List<AccountXPayment> initPaymentResult()

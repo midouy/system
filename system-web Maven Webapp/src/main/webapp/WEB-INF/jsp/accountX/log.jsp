@@ -20,6 +20,11 @@
     <div class="records">
         <hr/>
         <br/>
+        <div class="tr_row">
+            <span class="record_id">当前记录编号 :  <span class="red">${record.id }</span></span>&nbsp;&nbsp;&nbsp;
+            <span class="record_date">当前记录日期 : <span class="red"> ${record.date }</span></span>&nbsp;&nbsp;&nbsp;
+            <input type="button" value="返回首页"  style="width: 80px" onclick="backToIndex()"/>
+        </div>
         <table>
             <c:forEach items="${allRecords }" var="item">
                 <tr class="tr_row">
@@ -70,6 +75,9 @@
 <script>
     function checkRecord(id){
         window.location.href="${ctx}/accountX/log?recordId="+id;
+    }
+    function backToIndex(){
+        window.location.href="${ctx}/accountX/index";
     }
 </script>
 </html>

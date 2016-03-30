@@ -15,6 +15,8 @@ public interface AccountXRecordDao
 
     AccountXRecord getRecordByTime(String time);
 
+    AccountXRecord getRecordById(Integer id);
+
     Integer insertNewRecord(AccountXRecord record);
 
 

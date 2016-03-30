@@ -23,6 +23,10 @@
         select * from accountx_record order by date DESC limit 1
     </select>
 
+    <select id="getRecordById" resultType="org.system.domain.accountX.AccountXRecord" parameterType="java.lang.Integer">
+        select * from accountx_record where id = #{id} limit 1
+    </select>
+
     <select id="getRecordByTime" resultType="org.system.domain.accountX.AccountXRecord" parameterType="java.lang.String">
         select * from accountx_record where date = #{time} limit 1
     </select>

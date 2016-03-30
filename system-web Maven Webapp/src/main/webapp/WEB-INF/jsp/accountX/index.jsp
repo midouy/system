@@ -41,8 +41,8 @@
                     <input type="checkbox" id="${item.name }" class="checkbox name">${item.name }<br/><br/>
                 </c:forEach>
 
-                <input type="button" value="全选选中" id="selectAll">
-                <input type="button" value="全部取消" id="cancelAll">
+                <input type="button" value="全选选中" id="selectAll">&nbsp;&nbsp;&nbsp;
+                <input type="button" value="全部取消" id="cancelAll">&nbsp;&nbsp;&nbsp;
                 <input type="button" value="提交"  id="add_bill_btn" style="width: 80px"/><br/>
             </form>
 
@@ -50,8 +50,10 @@
         <div class="results">
             <hr/><br/>
             <div class="tr_row">
-                <input  type="button" value="记录本次" onclick="doRecord()"/>
-                <input  type="button" value="查看记录" onclick="checkRecord()"/>
+                <input  type="button" value="记录本次" onclick="doRecord()"/>&nbsp;&nbsp;&nbsp;
+                <input  type="button" value="查看记录" onclick="checkRecord()"/>&nbsp;&nbsp;&nbsp;
+                <span class="payPerson" >note : </span>
+                <input type="text" id="note" style="width: 200px">
             </div>
             <table>
                 <c:forEach items="${allPayments }" var="item">
@@ -179,12 +181,13 @@
     }
 
     function doRecord(){
+        var note = $("#note").val();
         if (confirm("确定进行记录？")) {
             $.ajax({
                 url: "${ctx}/accountX/doRecord",
                 dataType: "json",
                 type: "post",
-                data: {},
+                data: {note : note},
                 success: function (data) {
                     alert("Do Record Success ! ");
                     location.reload();
