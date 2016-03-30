@@ -106,8 +106,7 @@ public class AccountXService
         accountXBillDao.insertNewBill(accountXBill);
         accountXBill = accountXBillDao.getBillByTime(accountXBill.getDate());
         System.out.println(accountXBill);
-        if(accountXBill!=null)
-            throw new RuntimeException();
+
         float money = accountXBill.getMoney() / shares.length;
         for (String username : shares)
         {

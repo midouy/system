@@ -24,7 +24,7 @@
                 <select id="payer">
                     <option value="default">请选择付款人</option>
                     <c:forEach items="${allUsers }" var="item">
-                        <option value="${item.name }">${item.name }</option>
+                        <option class = "name" value="${item.name }">${item.name }</option>
                     </c:forEach>
                 </select>
 
@@ -38,7 +38,7 @@
 
                 <span class="payPerson">share : </span></br></br>
                 <c:forEach items="${allUsers }" var="item">
-                    <input type="checkbox" id="${item.name }" class="checkbox">${item.name }<br/><br/>
+                    <input type="checkbox" id="${item.name }" class="checkbox name">${item.name }<br/><br/>
                 </c:forEach>
 
                 <input type="button" value="全选选中" id="selectAll">
@@ -52,9 +52,9 @@
             <table>
                 <c:forEach items="${allPayments }" var="item">
                     <tr class="tr_row">
-                        <td class="td_pay">${item.from }</td>
+                        <td class="td_pay name">${item.from }</td>
                         <td class="td_id">给</td>
-                        <td class="td_pay">${item.to }</td>
+                        <td class="td_pay name">${item.to }</td>
                         <td class="td_pay">￥${item.money } </td>
                     </tr>
                 </c:forEach>
@@ -70,7 +70,7 @@
                 <c:forEach items="${allBills }" var="item">
                     <tr class="tr_row">
                         <td class="td_id">${item.id }</td>
-                        <td class="td_pay">${item.payer }</td>
+                        <td class="td_pay name">${item.payer }</td>
                         <td class="td_money">￥${item.money }</td>
                         <td class="td_date">${item.date }</td>
                         <td class="td_note">${item.note }</td>
@@ -88,7 +88,6 @@
     function addBill() {
         var payer = $("#payer").val();
         var money = $("#money").val();
-        var note = $("#note").val();
         var shares = initShares();
 
         if(payer=='default'){
@@ -110,7 +109,6 @@
                 sharesData: sharesData,
                 payer: payer,
                 money: money,
-                note: note
             },
             success: function (data) {
                 if (data.success) {
@@ -164,6 +162,15 @@
 //            alert("点击了取消");
         }
     }
+    function formatName(){
+        $('.name').each(function(){
+            var name = $(this).html();
+            if(name.length==2){
+                name = name.substring(0,1)+"&nbsp;&nbsp;&nbsp;"+name.substring(1);
+                $(this).html(name)
+            }
+        });
+    }
 </script>
 
 <%--button active--%>
@@ -187,6 +194,7 @@
         $("#cancelAll").click(function () {
             cancelAll();
         });
+        formatName();
     });
 
 </script>

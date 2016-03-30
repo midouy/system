@@ -42,7 +42,7 @@ public class AccountXController
 
     @RequestMapping(value = "/addBill", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> addBill(String sharesData, String payer, String money, String note)
+    public Map<String, Object> addBill(String sharesData, String payer, String money)
     {
         float m = 0;
         try
@@ -57,7 +57,7 @@ public class AccountXController
             String[] sharesArray = sharesData.split("@");
 
             System.out.println(m);
-            AccountXBill accountXBill = new AccountXBill(payer, m, time, note + "( " + sharesData.replaceAll("@", "  ") + " )");
+            AccountXBill accountXBill = new AccountXBill(payer, m, time,  "( " + sharesData.replaceAll("@", "  ") + " )");
             return accountXService.insertNewBill(accountXBill, sharesArray);
         } catch (Exception e)
         {
