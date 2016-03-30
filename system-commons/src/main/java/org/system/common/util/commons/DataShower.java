@@ -37,7 +37,7 @@ public class DataShower
         }
         System.out.println();
     }
-	
+
 	public static void show(int [] data, int start1 , int end1)
 	{
 		if(start1>end1||start1<0)
@@ -178,7 +178,7 @@ public class DataShower
 
 		for(E i : data)
 		{
-			System.out.print(i+"  ");
+			System.out.println(i+"  ");
 		}
 		System.out.println();
 	}
