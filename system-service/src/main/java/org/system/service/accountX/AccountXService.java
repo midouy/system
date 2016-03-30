@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.system.common.response.ResponseUtil;
 import org.system.common.util.commons.DataShower;
 import org.system.dao.accountX.AccountXPaymentDao;
 import org.system.dao.accountX.AccountXBillDao;
@@ -102,24 +103,24 @@ public class AccountXService
             System.out.println(accountXPayment);
             accountXPaymentDao.insertNewPayment(accountXPayment);
         }
-        return successResult(" Bill insert success ! ");
+        return ResponseUtil.successResult(" Bill insert success ! ");
     }
 
-    public Map<String, Object> successResult(String msg)
-    {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("success", true);
-        result.put("message", msg);
-        return result;
-    }
-
-    public Map<String, Object> failResult(String msg)
-    {
-        Map<String, Object> result = new HashMap<String, Object>();
-        result.put("success", false);
-        result.put("message", msg);
-        return result;
-    }
+//    public Map<String, Object> successResult(String msg)
+//    {
+//        Map<String, Object> result = new HashMap<String, Object>();
+//        result.put("success", true);
+//        result.put("message", msg);
+//        return result;
+//    }
+//
+//    public Map<String, Object> failResult(String msg)
+//    {
+//        Map<String, Object> result = new HashMap<String, Object>();
+//        result.put("success", false);
+//        result.put("message", msg);
+//        return result;
+//    }
 
     public Map<String, Object>deleteBillById(Integer id){
         Map<String, Object> result = new HashMap<String, Object>();

@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.system.common.response.ResponseUtil;
 import org.system.common.util.math.Calculater;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
@@ -47,7 +48,7 @@ public class AccountXController
         try
         {
             if(money==null||money.equals("")){
-                return accountXService.failResult("金额格式不正确 !");
+                return ResponseUtil.failResult("金额格式不正确 !");
             }
             m = Float.parseFloat(Calculater.doCalculate(money));
             Date date = new Date();
@@ -62,7 +63,7 @@ public class AccountXController
         {
             e.printStackTrace();
         }
-        return accountXService.failResult(" 金额格式不正确 !");
+        return ResponseUtil.failResult(" 金额格式不正确 !");
     }
 
     @RequestMapping("/deleteBill")
