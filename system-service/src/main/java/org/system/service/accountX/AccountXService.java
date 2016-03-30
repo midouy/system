@@ -35,6 +35,7 @@ public class AccountXService
         List<AccountXUser> allUsers = accountXUserDao.getAllUser();
         List<AccountXBill> allBills = accountXBillDao.getAllBills();
         List<AccountXPayment> allPayments = initPaymentResult();
+        float moneySum = moneySum(allBills);
 
         DataShower.show(allUsers);
         DataShower.show(allBills);
@@ -43,6 +44,7 @@ public class AccountXService
         model.addAttribute("allUsers", allUsers);
         model.addAttribute("allBills", allBills);
         model.addAttribute("allPayments", allPayments);
+        model.addAttribute("moneySum", moneySum);
     }
 
     private List<AccountXPayment> initPaymentResult()
@@ -87,6 +89,17 @@ public class AccountXService
         }
     }
 
+    private float moneySum(List<AccountXBill> allBills)
+    {
+        float result = 0;
+        if(allBills == null)
+            return result;
+        for(AccountXBill bill : allBills){
+            result+=bill.getMoney();
+        }
+        return result;
+    }
+
     public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
     {
         accountXBillDao.insertNewBill(accountXBill);
@@ -117,6 +130,6 @@ public class AccountXService
         Map<String, Object> result = new HashMap<String, Object>();
         result.put("bill_delete_Result", accountXBillDao.deleteAllBills());
         result.put("payment_delete_Result", accountXPaymentDao.deleteAllPayment());
-        return ResponseUtil.successResult(result,"全部删除成功");
+        return ResponseUtil.successResult(result, "全部删除成功");
     }
 }

@@ -31,8 +31,8 @@
                 <span class="payPerson">&nbsp;&nbsp;money : </span>
                 <input type="text" id="money" style="width: 200px">
 
-                <span class="payPerson" >note : </span>
-                <input type="text" id="note" style="width: 200px">
+                <%--<span class="payPerson" >note : </span>--%>
+                <%--<input type="text" id="note" style="width: 200px">--%>
 
                 </br></br>
 
@@ -55,20 +55,23 @@
                         <td class="td_pay">${item.from }</td>
                         <td class="td_id">给</td>
                         <td class="td_pay">${item.to }</td>
-                        <td class="td_pay">${item.money } </td>
+                        <td class="td_pay">￥${item.money } </td>
                     </tr>
                 </c:forEach>
             </table>
         </div>
         <div class="all_bills">
             <hr/><br/>
-            <div class="tr_row"><input  type="button" value="删除全部" onclick="deleteAll()"/></div>
+            <div class="tr_row">
+                <input  type="button" value="删除全部" onclick="deleteAll()"/>
+                <span class="moneySum">&nbsp;&nbsp;&nbsp;金额总计 :  ￥${moneySum }</span>
+            </div>
             <table>
                 <c:forEach items="${allBills }" var="item">
                     <tr class="tr_row">
                         <td class="td_id">${item.id }</td>
                         <td class="td_pay">${item.payer }</td>
-                        <td class="td_money">${item.money }</td>
+                        <td class="td_money">￥${item.money }</td>
                         <td class="td_date">${item.date }</td>
                         <td class="td_note">${item.note }</td>
                         <td><input type="button" value="删除" id="${item.id }" class="delete" style="width: 80px" onclick="deleteBill(${item.id })"/></td>
