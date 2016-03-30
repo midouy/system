@@ -121,6 +121,7 @@ public class AccountXService
         return ResponseUtil.successResult(" Bill insert success ! ");
     }
 
+    @Transactional
     public Map<String, Object> deleteBillById(Integer id)
     {
         Map<String, Object> result = new HashMap<String, Object>();
@@ -129,6 +130,7 @@ public class AccountXService
         return ResponseUtil.successResult(result, "删除成功");
     }
 
+    @Transactional
     public Map<String, Object> deleteAll()
     {
         Map<String, Object> result = new HashMap<String, Object>();
