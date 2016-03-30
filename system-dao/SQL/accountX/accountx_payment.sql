@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2016-03-29 18:14:35
+Date: 2016-03-30 17:31:56
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -26,4 +26,4 @@ CREATE TABLE `accountx_payment` (
   `to_user` varchar(255) DEFAULT NULL,
   `money` float(255,5) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8;

@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50621
 File Encoding         : 65001
 
-Date: 2016-03-29 17:03:27
+Date: 2016-03-30 17:31:33
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -25,3 +25,11 @@ CREATE TABLE `accountx_user` (
   `short_name` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of accountx_user
+-- ----------------------------
+INSERT INTO `accountx_user` VALUES ('1', '王雁鸣', 'wym');
+INSERT INTO `accountx_user` VALUES ('2', '刘偌含', 'lrh');
+INSERT INTO `accountx_user` VALUES ('3', '陈茜', 'cx');
+INSERT INTO `accountx_user` VALUES ('4', '张晓巍', 'zxw');
