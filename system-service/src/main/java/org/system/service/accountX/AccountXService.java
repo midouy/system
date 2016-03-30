@@ -87,33 +87,6 @@ public class AccountXService
         }
     }
 
-//    public void show(List data)
-//    {
-//        System.out.println("show ... ");
-//        for (Object object : data)
-//        {
-//            System.out.println(object.toString());
-//        }
-//    }
-//
-//    public void show(Set data)
-//    {
-//        for (Object object : data)
-//        {
-//            System.out.println(object.toString());
-//        }
-//    }
-//
-//    public void show(Object[] data)
-//    {
-//        System.out.println("show ... ");
-//        for (Object object : data)
-//        {
-//            System.out.println(object.toString());
-//        }
-//    }
-
-//    @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
     {
         accountXBillDao.insertNewBill(accountXBill);
