@@ -16,9 +16,23 @@ public class ResponseUtil
         return result;
     }
 
+    public static Map<String, Object> successResult(Map result ,String msg)
+    {
+        result.put("success", true);
+        result.put("message", msg);
+        return result;
+    }
+
     public static Map<String, Object> failResult(String msg)
     {
         Map<String, Object> result = new HashMap<String, Object>();
+        result.put("success", false);
+        result.put("message", msg);
+        return result;
+    }
+
+    public static Map<String, Object> failResult(Map result, String msg)
+    {
         result.put("success", false);
         result.put("message", msg);
         return result;

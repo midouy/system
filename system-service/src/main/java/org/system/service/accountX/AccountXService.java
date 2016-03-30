@@ -21,7 +21,6 @@ import java.util.*;
 @Service
 public class AccountXService
 {
-
     @Autowired
     private AccountXBillDao accountXBillDao;
 
@@ -91,7 +90,6 @@ public class AccountXService
     public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
     {
         accountXBillDao.insertNewBill(accountXBill);
-
         accountXBill = accountXBillDao.getBillByTime(accountXBill.getDate());
         System.out.println(accountXBill);
         float money = accountXBill.getMoney() / shares.length;
@@ -106,33 +104,19 @@ public class AccountXService
         return ResponseUtil.successResult(" Bill insert success ! ");
     }
 
-//    public Map<String, Object> successResult(String msg)
-//    {
-//        Map<String, Object> result = new HashMap<String, Object>();
-//        result.put("success", true);
-//        result.put("message", msg);
-//        return result;
-//    }
-//
-//    public Map<String, Object> failResult(String msg)
-//    {
-//        Map<String, Object> result = new HashMap<String, Object>();
-//        result.put("success", false);
-//        result.put("message", msg);
-//        return result;
-//    }
-
-    public Map<String, Object>deleteBillById(Integer id){
+    public Map<String, Object> deleteBillById(Integer id)
+    {
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("bill_delete_Result",accountXBillDao.DeleteBillById(id));
-        result.put("payment_delete_Result",accountXPaymentDao.deletePaymentByBillId(id));
-        return result;
+        result.put("bill_delete_Result", accountXBillDao.DeleteBillById(id));
+        result.put("payment_delete_Result", accountXPaymentDao.deletePaymentByBillId(id));
+        return ResponseUtil.successResult(result, "删除成功");
     }
 
-    public Map<String, Object>deleteAll(){
+    public Map<String, Object> deleteAll()
+    {
         Map<String, Object> result = new HashMap<String, Object>();
-        result.put("bill_delete_Result",accountXBillDao.deleteAllBills());
-        result.put("payment_delete_Result",accountXPaymentDao.deleteAllPayment());
-        return result;
+        result.put("bill_delete_Result", accountXBillDao.deleteAllBills());
+        result.put("payment_delete_Result", accountXPaymentDao.deleteAllPayment());
+        return ResponseUtil.successResult(result,"全部删除成功");
     }
 }
