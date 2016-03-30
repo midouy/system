@@ -21,4 +21,6 @@ public interface AccountXBillDao
 
     AccountXBill getBillByTime(String date);
 
+    Integer updateBillRecordId(Integer recordId);
+
 }

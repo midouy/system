@@ -1,5 +1,6 @@
 package org.system.service.accountX;
 
+import org.springframework.beans.factory.ObjectFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -9,6 +10,8 @@ import org.system.common.util.commons.DataShower;
 import org.system.dao.accountX.*;
 import org.system.domain.accountX.*;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 /**
@@ -158,5 +161,42 @@ public class AccountXService
         result.put("bill_delete_Result", accountXBillDao.deleteAllBills());
         result.put("payment_delete_Result", accountXPaymentDao.deleteAllPayment());
         return ResponseUtil.successResult(result, "全部删除成功");
+    }
+
+    @Transactional
+    public Map<String , Object> doRecord(String note){
+        //计算总计金额
+        List<AccountXBill> allBills = accountXBillDao.getAllBills();
+        List<AccountXPayment> allPayments = initPaymentResult();
+        float moneySum = moneySum(allBills);
+        //生成record
+        Date date = new Date();
+        DateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String time = format.format(date);
+        AccountXRecord record = new AccountXRecord(moneySum, time, note);
+
+        //通过时间获取recordID
+        Integer recordInsert = accountXRecordDao.insertNewRecord(record);
+        record = accountXRecordDao.getRecordByTime(time);
+
+        //获取payment结果
+        Integer payLogInsert = 0;
+        for(AccountXPayment pay : allPayments){
+            AccountXPayLog payLog = new AccountXPayLog(record.getId(),pay.getFrom(),pay.getTo(),pay.getMoney());
+            payLogInsert+= accountXPayLogDao.insertNewPayLog(payLog);
+        }
+        //更新bill 的 recordID
+        Integer billUpdate = accountXBillDao.updateBillRecordId(record.getId());
+
+        //清空payment表
+        Integer paymentsDelete = accountXPaymentDao.deleteAllPayment();
+
+        HashMap<String , Object> result = new HashMap<String, Object>();
+        result.put("recordInsert",recordInsert);
+        result.put("payLogInsert",payLogInsert);
+        result.put("billUpdate",billUpdate);
+        result.put("paymentsDelete",paymentsDelete);
+
+        return ResponseUtil.successResult(result,"记录成功!");
     }
 }

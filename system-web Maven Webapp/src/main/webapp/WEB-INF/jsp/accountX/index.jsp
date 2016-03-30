@@ -49,6 +49,10 @@
         </div>
         <div class="results">
             <hr/><br/>
+            <div class="tr_row">
+                <input  type="button" value="记录本次" onclick="doRecord()"/>
+                <input  type="button" value="查看记录" onclick="checkRecord()"/>
+            </div>
             <table>
                 <c:forEach items="${allPayments }" var="item">
                     <tr class="tr_row">
@@ -145,6 +149,7 @@
             }
         });
     }
+
     function deleteAll() {
         if (confirm("确定删除所有？")) {
             $.ajax({
@@ -162,6 +167,7 @@
 //            alert("点击了取消");
         }
     }
+
     function formatName(){
         $('.name').each(function(){
             var name = $(this).html();
@@ -170,6 +176,28 @@
                 $(this).html(name)
             }
         });
+    }
+
+    function doRecord(){
+        if (confirm("确定进行记录？")) {
+            $.ajax({
+                url: "${ctx}/accountX/doRecord",
+                dataType: "json",
+                type: "post",
+                data: {},
+                success: function (data) {
+                    alert("Do Record Success ! ");
+                    location.reload();
+                }
+            });
+        }
+        else {
+//            alert("点击了取消");
+        }
+    }
+
+    function checkRecord(){
+            window.location.href="${ctx}/accountX/log";
     }
 </script>
 

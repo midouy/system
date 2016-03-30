@@ -10,4 +10,6 @@ import java.util.List;
 public interface AccountXPayLogDao
 {
     List<AccountXPayLog> getPayLogByRecordId(Integer id);
+
+    Integer insertNewPayLog(AccountXPayLog payLog);
 }

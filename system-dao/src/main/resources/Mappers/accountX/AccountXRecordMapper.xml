@@ -23,6 +23,15 @@
         select * from accountx_record order by date DESC limit 1
     </select>
 
+    <select id="getRecordByTime" resultType="org.system.domain.accountX.AccountXRecord" parameterType="java.lang.String">
+        select * from accountx_record where date = #{time} limit 1
+    </select>
+
+    <insert id="insertNewRecord" parameterType="org.system.domain.accountX.AccountXRecord">
+    INSERT into accountx_record (money,date,note)
+    VALUES (#{money}, #{date}, #{note})
+    </insert>
+
     <!--<select id="getBillByTime" resultType="org.system.domain.accountX.AccountXBill" parameterType="java.lang.String">-->
         <!--select * from accountx_bill where date = #{date}-->
     <!--</select>-->

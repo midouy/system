@@ -12,4 +12,10 @@ public interface AccountXRecordDao
     List<AccountXRecord> getAllRecord();
 
     AccountXRecord getRecentRecord();
+
+    AccountXRecord getRecordByTime(String time);
+
+    Integer insertNewRecord(AccountXRecord record);
+
+
 }

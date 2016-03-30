@@ -11,6 +11,18 @@ public class AccountXPayLog
     private String to;
     private float money;
 
+    public AccountXPayLog(Integer recordId, String from, String to, float money)
+    {
+        this.recordId = recordId;
+        this.from = from;
+        this.to = to;
+        this.money = money;
+    }
+
+    public AccountXPayLog()
+    {
+    }
+
     public Integer getId()
     {
         return id;

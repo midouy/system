@@ -10,6 +10,7 @@ import org.system.common.response.ResponseUtil;
 import org.system.common.util.math.Calculater;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -41,7 +42,8 @@ public class AccountXController
     }
 
     @RequestMapping("/log")
-    public String toLog(Model model, Integer recordId){
+    public String toLog(Model model, Integer recordId)
+    {
         try
         {
             accountXService.initLogPage(model, recordId);
@@ -61,7 +63,8 @@ public class AccountXController
         float m = 0;
         try
         {
-            if(money==null||money.equals("")){
+            if (money == null || money.equals(""))
+            {
                 return ResponseUtil.failResult("金额格式不正确 !");
             }
             m = Float.parseFloat(Calculater.doCalculate(money));
@@ -71,13 +74,19 @@ public class AccountXController
             String[] sharesArray = sharesData.split("@");
 
             System.out.println(m);
-            AccountXBill accountXBill = new AccountXBill(payer, m, time,  "( " + sharesData.replaceAll("@", "  ") + " )");
+            AccountXBill accountXBill = new AccountXBill(payer, m, time, "( " + sharesData.replaceAll("@", "  ") + " )");
             return accountXService.insertNewBill(accountXBill, sharesArray);
         } catch (Exception e)
         {
             e.printStackTrace();
         }
         return ResponseUtil.failResult(" 金额格式不正确 !");
+    }
+
+    @RequestMapping(value = "/doRecord", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String , Object> doRecord(String note){
+        return accountXService.doRecord(note);
     }
 
     @RequestMapping("/deleteBill")

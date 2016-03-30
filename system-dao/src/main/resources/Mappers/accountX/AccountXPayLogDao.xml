@@ -20,6 +20,12 @@
         select * from accountx_paylog where record_id = #{id}
     </select>
 
+
+    <insert id="insertNewPayLog" parameterType="org.system.domain.accountX.AccountXPayLog">
+    INSERT into accountx_paylog (record_id,from_user,to_user,money)
+    VALUES (#{recordId}, #{from}, #{to}, #{money})
+    </insert>
+
     <!--<select id="getBillByTime" resultType="org.system.domain.accountX.AccountXBill" parameterType="java.lang.String">-->
     <!--select * from accountx_bill where date = #{date}-->
     <!--</select>-->

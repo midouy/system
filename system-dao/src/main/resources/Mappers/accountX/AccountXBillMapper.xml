@@ -41,4 +41,8 @@
         delete from accountx_bill where record_id = -999
     </delete>
 
+    <update id="updateBillRecordId" parameterType="java.lang.Integer">
+        update accountx_bill set record_id = #{recordId} where record_id = -999
+    </update>
+
 </mapper>

@@ -10,6 +10,18 @@ public class AccountXRecord
     private String date;
     private String note;
 
+    public AccountXRecord(float money, String date, String note)
+    {
+        this.money = money;
+        this.date = date;
+        this.note = note;
+    }
+
+    public AccountXRecord()
+    {
+
+    }
+
     public Integer getId()
     {
         return id;
