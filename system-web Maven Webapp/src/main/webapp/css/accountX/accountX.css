@@ -2,6 +2,10 @@
 .results { width:733px; height:420px; position:absolute; left:40px; top:400px;   }
 .all_bills { width:933px; height:420px; position:absolute; left:900px; top:40px;   }
 
+.records { width:733px; height:420px; position:absolute; left:40px; top:40px;   }
+.payLogs { width:733px; height:420px; position:absolute; left:40px; top:400px;   }
+.billLogs { width:933px; height:420px; position:absolute; left:900px; top:40px;   }
+
 .td_id { width:50px;}
 .td_pay {  width: 80px;}
 .td_money { width: 80px;}

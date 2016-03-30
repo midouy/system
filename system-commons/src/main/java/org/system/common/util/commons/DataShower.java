@@ -175,7 +175,6 @@ public class DataShower
 	//集合遍历
 	public static <E> void show(Collection<E> data)
 	{
-
 		for(E i : data)
 		{
 			System.out.println(i+"  ");

@@ -40,6 +40,20 @@ public class AccountXController
         return "accountX/index";
     }
 
+    @RequestMapping("/log")
+    public String toLog(Model model){
+        try
+        {
+            accountXService.initLogPage(model);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+            model.addAttribute("msg", "日志页面初始化错误");
+            return "accountX/Error";
+        }
+        return "accountX/log";
+    }
+
     @RequestMapping(value = "/addBill", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> addBill(String sharesData, String payer, String money)

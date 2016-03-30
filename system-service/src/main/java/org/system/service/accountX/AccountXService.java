@@ -6,12 +6,8 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.system.common.response.ResponseUtil;
 import org.system.common.util.commons.DataShower;
-import org.system.dao.accountX.AccountXPaymentDao;
-import org.system.dao.accountX.AccountXBillDao;
-import org.system.dao.accountX.AccountXUserDao;
-import org.system.domain.accountX.AccountXBill;
-import org.system.domain.accountX.AccountXPayment;
-import org.system.domain.accountX.AccountXUser;
+import org.system.dao.accountX.*;
+import org.system.domain.accountX.*;
 
 import java.util.*;
 
@@ -30,6 +26,12 @@ public class AccountXService
     @Autowired
     private AccountXUserDao accountXUserDao;
 
+    @Autowired
+    private AccountXRecordDao accountXRecordDao;
+
+    @Autowired
+    private AccountXPayLogDao accountXPayLogDao;
+
     public void initPage(Model model)
     {
         List<AccountXUser> allUsers = accountXUserDao.getAllUser();
@@ -45,6 +47,19 @@ public class AccountXService
         model.addAttribute("allBills", allBills);
         model.addAttribute("allPayments", allPayments);
         model.addAttribute("moneySum", moneySum);
+    }
+
+    public void initLogPage(Model model)
+    {
+        AccountXRecord recentRecord = accountXRecordDao.getRecentRecord();
+        List<AccountXRecord> allRecords = accountXRecordDao.getAllRecord();
+        List<AccountXPayLog> allPayLogs = accountXPayLogDao.getPayLogByRecordId(recentRecord.getId());
+
+        DataShower.show(allRecords);
+        DataShower.show(allPayLogs);
+
+        model.addAttribute("allRecords",allRecords);
+        model.addAttribute("allPayLogs",allPayLogs);
     }
 
     private List<AccountXPayment> initPaymentResult()

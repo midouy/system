@@ -10,6 +10,7 @@ public class AccountXBill
     private float money;
     private String date ;
     private String note;
+    private Integer recordId;
 
     public AccountXBill(){
 
@@ -21,6 +22,7 @@ public class AccountXBill
         this.money = money;
         this.date = date;
         this.note = note;
+        this.recordId = -999;
     }
 
     public Integer getId()
@@ -78,10 +80,11 @@ public class AccountXBill
     {
         return "AccountXBill{" +
                 "id=" + id +
-                ", payer=" + payer +
+                ", payer='" + payer + '\'' +
                 ", money=" + money +
                 ", date='" + date + '\'' +
                 ", note='" + note + '\'' +
+                ", recordId=" + recordId +
                 '}';
     }
 }
