@@ -20,6 +20,10 @@
         select * from accountx_bill where record_id = -999
     </select>
 
+    <select id="getBillsLogByRecordId" resultMap="AllBillList" parameterType="java.lang.Integer">
+        select * from accountx_bill where record_id = #{id}
+    </select>
+
     <select id="getBillByTime" resultType="org.system.domain.accountX.AccountXBill" parameterType="java.lang.String">
         select * from accountx_bill where date = #{date}
     </select>
@@ -30,7 +34,7 @@
     </insert>
 
     <delete id="DeleteBillById" parameterType="java.lang.Integer">
-        delete from accountx_bill where id  = #{id}
+        delete from accountx_bill where id  = #{id} AND record_id = -999
     </delete>
 
     <delete id="deleteAllBills">

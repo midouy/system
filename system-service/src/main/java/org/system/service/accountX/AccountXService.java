@@ -49,17 +49,25 @@ public class AccountXService
         model.addAttribute("moneySum", moneySum);
     }
 
-    public void initLogPage(Model model)
+    public void initLogPage(Model model, Integer recordId)
     {
-        AccountXRecord recentRecord = accountXRecordDao.getRecentRecord();
+        if(recordId==null||recordId<=0){
+            AccountXRecord recentRecord = accountXRecordDao.getRecentRecord();
+            recordId = recentRecord.getId();
+        }
+
         List<AccountXRecord> allRecords = accountXRecordDao.getAllRecord();
-        List<AccountXPayLog> allPayLogs = accountXPayLogDao.getPayLogByRecordId(recentRecord.getId());
+        List<AccountXPayLog> allPayLogs = accountXPayLogDao.getPayLogByRecordId(recordId);
+        List<AccountXBill> allBillLogs = accountXBillDao.getBillsLogByRecordId(recordId);
+
 
         DataShower.show(allRecords);
         DataShower.show(allPayLogs);
+        DataShower.show(allBillLogs);
 
         model.addAttribute("allRecords",allRecords);
         model.addAttribute("allPayLogs",allPayLogs);
+        model.addAttribute("allBillLogs",allBillLogs);
     }
 
     private List<AccountXPayment> initPaymentResult()

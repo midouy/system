@@ -51,8 +51,25 @@
     <div class="billLogs">
         <hr/>
         <br/>
+        <table>
+            <c:forEach items="${allBillLogs }" var="item">
+                <tr class="tr_row">
+                    <td class="td_id">${item.id }</td>
+                    <td class="td_pay name">${item.payer }</td>
+                    <td class="td_money">￥${item.money }</td>
+                    <td class="td_date">${item.date }</td>
+                    <td class="td_note">${item.note }</td>
+                    <%--<td><input type="button" value="删除" id="${item.id }" class="delete" style="width: 80px" onclick="deleteBill(${item.id })"/></td>--%>
+                </tr>
+            </c:forEach>
+        </table>
     </div>
 
 </div>
 </body>
+<script>
+    function checkRecord(id){
+        window.location.href="${ctx}/accountX/log?recordId="+id;
+    }
+</script>
 </html>

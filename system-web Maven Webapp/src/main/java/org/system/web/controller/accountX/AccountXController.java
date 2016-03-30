@@ -41,10 +41,10 @@ public class AccountXController
     }
 
     @RequestMapping("/log")
-    public String toLog(Model model){
+    public String toLog(Model model, Integer recordId){
         try
         {
-            accountXService.initLogPage(model);
+            accountXService.initLogPage(model, recordId);
         } catch (Exception e)
         {
             e.printStackTrace();

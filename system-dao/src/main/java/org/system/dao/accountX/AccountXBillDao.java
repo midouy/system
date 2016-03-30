@@ -11,12 +11,14 @@ public interface AccountXBillDao
 {
     List<AccountXBill> getAllBills();
 
+    List<AccountXBill> getBillsLogByRecordId(Integer id);
+
     Integer DeleteBillById(Integer id);
-//
+
     Integer deleteAllBills();
-//
+
     void insertNewBill(AccountXBill bill);
-//
+
     AccountXBill getBillByTime(String date);
 
 }
