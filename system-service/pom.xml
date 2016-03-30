@@ -23,6 +23,11 @@
 			<artifactId>system-dao</artifactId>
 			<version>${project.version}</version>
 		</dependency>
+        <dependency>
+            <groupId>wym.maven</groupId>
+            <artifactId>system-commons</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 		<dependency>
 			<groupId>javax</groupId>
 			<artifactId>javaee-api</artifactId>

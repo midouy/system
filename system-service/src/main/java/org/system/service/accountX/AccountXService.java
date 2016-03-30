@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.system.common.util.commons.DataShower;
 import org.system.dao.accountX.AccountXPaymentDao;
 import org.system.dao.accountX.AccountXBillDao;
 import org.system.dao.accountX.AccountXUserDao;
@@ -35,9 +36,9 @@ public class AccountXService
         List<AccountXBill> allBills = accountXBillDao.getAllBills();
         List<AccountXPayment> allPayments = initPaymentResult();
 
-        show(allUsers);
-        show(allBills);
-        show(allPayments);
+        DataShower.show(allUsers);
+        DataShower.show(allBills);
+        DataShower.show(allPayments);
 
         model.addAttribute("allUsers", allUsers);
         model.addAttribute("allBills", allBills);
@@ -69,8 +70,6 @@ public class AccountXService
 
     private void mergePayment(List<AccountXPayment> results, List<AccountXPayment> allPayments)
     {
-        show(allPayments);
-        show(results);
         for (AccountXPayment resultItem : results)
         {
             for (AccountXPayment payment : allPayments)
@@ -88,31 +87,31 @@ public class AccountXService
         }
     }
 
-    public void show(List data)
-    {
-        System.out.println("show ... ");
-        for (Object object : data)
-        {
-            System.out.println(object.toString());
-        }
-    }
-
-    public void show(Set data)
-    {
-        for (Object object : data)
-        {
-            System.out.println(object.toString());
-        }
-    }
-
-    public void show(Object[] data)
-    {
-        System.out.println("show ... ");
-        for (Object object : data)
-        {
-            System.out.println(object.toString());
-        }
-    }
+//    public void show(List data)
+//    {
+//        System.out.println("show ... ");
+//        for (Object object : data)
+//        {
+//            System.out.println(object.toString());
+//        }
+//    }
+//
+//    public void show(Set data)
+//    {
+//        for (Object object : data)
+//        {
+//            System.out.println(object.toString());
+//        }
+//    }
+//
+//    public void show(Object[] data)
+//    {
+//        System.out.println("show ... ");
+//        for (Object object : data)
+//        {
+//            System.out.println(object.toString());
+//        }
+//    }
 
 //    @Transactional(rollbackFor = Exception.class)
     public Map<String, Object> insertNewBill(AccountXBill accountXBill, String[] shares)
