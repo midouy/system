@@ -8,9 +8,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.system.common.response.ResponseUtil;
+import org.system.common.utils.IpUtils;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -27,10 +29,11 @@ public class AccountXController
     private AccountXService accountXService;
 
     @RequestMapping("/index")
-    public String index(Model model)
+    public String index(HttpServletRequest request, Model model)
     {
         try
         {
+            System.out.println("\r\nAccessing : "+IpUtils.getRealIp(request)+"\r\n");
             accountXService.initPage(model);
         } catch (Exception e)
         {

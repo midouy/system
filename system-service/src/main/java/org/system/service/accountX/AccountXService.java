@@ -44,8 +44,8 @@ public class AccountXService
         float moneySum = moneySum(allBills);
 
         DataShower.show(allUsers);
-        DataShower.show(allBills);
-        DataShower.show(allPayments);
+//        DataShower.show(allBills);
+//        DataShower.show(allPayments);
 
         model.addAttribute("allUsers", allUsers);
         model.addAttribute("allBills", allBills);
@@ -66,9 +66,9 @@ public class AccountXService
         AccountXRecord record = accountXRecordDao.getRecordById(recordId);
 
         DataShower.show(allRecords);
-        DataShower.show(allPayLogs);
-        DataShower.show(allBillLogs);
-        DataShower.show(record);
+//        DataShower.show(allPayLogs);
+//        DataShower.show(allBillLogs);
+//        DataShower.show(record);
 
         model.addAttribute("allRecords",allRecords);
         model.addAttribute("allPayLogs",allPayLogs);

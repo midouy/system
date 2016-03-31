@@ -33,7 +33,7 @@ public class IpUtils {
      * @param request
      * @return ip
      */
-    public static String gerRealIp(HttpServletRequest request) {
+    public static String getRealIp(HttpServletRequest request) {
 
         return getLastIpAddressExcludeWhite(request,null);
 
