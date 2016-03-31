@@ -1,8 +1,5 @@
 package org.system.common.util.commons;
 
-
-
-
 import org.system.common.util.model.BinaryTree;
 import org.system.common.util.model.Node;
 import org.system.common.util.model.ShowType;
