@@ -24,6 +24,7 @@ public class Main
     }
 
 	@RequestMapping("/{index}/test")
+	//在路径匹配中加入参数, 这种方式可以让一套后台代码匹配多套前台页面
 	public String Test(@PathVariable String index){
 
 		System.out.println("index = " + index);
