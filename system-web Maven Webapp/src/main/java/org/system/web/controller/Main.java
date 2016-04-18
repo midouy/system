@@ -1,6 +1,7 @@
 package org.system.web.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
@@ -21,5 +22,19 @@ public class Main
     {
         return "test";
     }
+
+	@RequestMapping("/{index}/test")
+	public String Test(@PathVariable String index){
+
+		System.out.println("index = " + index);
+
+		return "test";
+	}
+
+	public static void main(String[] args)
+	{
+		System.out.println("Hello world");
+	}
+
 
 }
