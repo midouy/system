@@ -23,7 +23,7 @@
 
 
 	<!--避免IE执行AJAX时，返回JSON出现下载文件 -->
-	<bean id="mappingJacksonHttpMessageConverter"
+    <bean id="mappingJacksonHttpMessageConverter"
 		class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
 		<property name="supportedMediaTypes">
 			<list>
@@ -37,13 +37,21 @@
 		两个bean, 是spring MVC为@Controllers分发请求所必须的 -->
 	<!-- <mvc:annotation-driven/> -->
 
-	<!-- 方法级的handlerMapping，完成请求和注解POJO的映射 -->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.ResourceHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter"/>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <!-- 方法级的handlerMapping，完成请求和注解POJO的映射 -->
 	<bean
 		class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
 		<property name="messageConverters">
 			<list>
-				<ref bean="mappingJacksonHttpMessageConverter" /> <!-- JSON转换器 -->
-			</list>
+            <ref bean="mappingJacksonHttpMessageConverter" /> <!-- JSON转换器 -->
+        </list>
 		</property>
 	</bean>
 

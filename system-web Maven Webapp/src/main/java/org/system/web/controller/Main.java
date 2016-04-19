@@ -1,8 +1,16 @@
 package org.system.web.controller;
 
+import bit.wym.commons.util.DataShower;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.system.web.controller.accountX.Person;
+
+import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by wangyanming on 2015/8/18.
@@ -14,7 +22,7 @@ public class Main
     @RequestMapping("mainPage")
     public String showMainPage()
     {
-        return "mainPage";
+        return "main/test";
     }
 
     @RequestMapping("test")
@@ -37,5 +45,12 @@ public class Main
 		System.out.println("Hello world");
 	}
 
+	@RequestMapping(value = "test/array")
+	@ResponseBody
+	public void TestArray(@RequestBody List<Person> users, HttpServletRequest request)
+	{
+		System.out.println("testArray");
+		DataShower.show(users);
+	}
 
 }
