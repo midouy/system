@@ -93,7 +93,8 @@ public class Main
 	{
 		try
 		{
-			System.out.println("REQUEST Getting [ "+ DateUtils.getCurrentFormatDateTime()+" ] : complex ");
+			System.out.println("REQUEST Getting [ "+ DateUtils.getCurrentFormatDateTime()+" ] : >>> complex <<< ");
+			System.out.println(users);
 			System.out.println("name : " + users.getTitle());
 			System.out.println("age : " + users.getAge());
 			DataShower.show(users.getPersons());
@@ -103,21 +104,5 @@ public class Main
 		}
 		return ResponseUtil.failResult(" Request failed : " + "complex");
 	}
-
-	@RequestMapping(value = "testNothing")
-	@ResponseBody
-	public Map<String, Object> testNothing(HttpServletRequest request, Model model)
-	{
-		try
-		{
-			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : testNothing");
-			System.out.println("just test nothing");
-		} catch (Exception e)
-		{
-			e.printStackTrace();
-		}
-		return ResponseUtil.failResult(" Request failed : " + "testNothing");
-	}
-
 
 }

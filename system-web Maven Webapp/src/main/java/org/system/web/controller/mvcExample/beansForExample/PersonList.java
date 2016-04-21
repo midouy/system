@@ -1,5 +1,6 @@
 package org.system.web.controller.mvcExample.beansForExample;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -12,6 +13,16 @@ public class PersonList
 	private String title;
 
 	private int age;
+
+	@Override
+	public String toString()
+	{
+		return "PersonList{" +
+				"persons=" + Arrays.deepToString(persons.toArray()) +
+				", title='" + title + '\'' +
+				", age=" + age +
+				'}';
+	}
 
 	public String getTitle()
 	{
