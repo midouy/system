@@ -47,7 +47,8 @@ public class Main
 	 */
 	@RequestMapping("/test/normal")
 	@ResponseBody
-	public Map<String, Object> TestNormal(HttpServletRequest request, String name, int age){
+	public Map<String, Object> TestNormal(HttpServletRequest request,  //@RequestParam 可以手动注入传递参数,
+										  @RequestParam(value = "name", required = true) String name, int age){
 		System.out.println(request.toString());
 		System.out.println("name : " + name);
 		System.out.println("age : " + age);
@@ -85,16 +86,17 @@ public class Main
 	}
 
 	/**
-	 * 封装成一个复杂对象
-	 * */
-	@RequestMapping(value = "complex")
-	@ResponseBody
-	public Map<String, Object> complex(HttpServletRequest request, Model model, PersonList users)
+	 * 封装成一个复杂对象( 传递JSON对象 )
+	 * 可以传递多个参数
+	 *
+	 */
+	public Map<String, Object> complex(PersonList users , String anotherPara)
 	{
 		try
 		{
 			System.out.println("REQUEST Getting [ "+ DateUtils.getCurrentFormatDateTime()+" ] : >>> complex <<< ");
 			System.out.println(users);
+			System.out.println("anotherPara : "+ anotherPara);
 			System.out.println("name : " + users.getTitle());
 			System.out.println("age : " + users.getAge());
 			DataShower.show(users.getPersons());
@@ -105,4 +107,23 @@ public class Main
 		return ResponseUtil.failResult(" Request failed : " + "complex");
 	}
 
+
+	/**
+	 * 封装成一个复杂对象( 传递JSON字符串 )
+	 */
+	@RequestMapping(value = "complexString")
+	@ResponseBody
+	public Map<String, Object> complexString(@RequestBody PersonList users)
+	{
+		try
+		{
+			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : >>> complexString <<<");
+			System.out.println(users);
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return ResponseUtil.failResult(" Request failed : " + "complexString");
+	}
 }

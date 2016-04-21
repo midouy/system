@@ -20,6 +20,7 @@
     <input type="button" value="testNormal" onclick="testNormal();">
     <input type="button" value="testBean" onclick="testBean();">
     <input type="button" value="testComplex" onclick="testComplex();">
+    <input type="button" value="testComplexString" onclick="complexString();">
 </div>
 
 </body>
@@ -83,6 +84,7 @@
         var data = {}; //使用自己定义的JS对象作为ajax的传输参数
         data["title"] = "sagelasy";
         data["age"] = 2000;
+        data["anotherPara"] = "I am another parameter !";
 
         for(var i = 0; i<saveDataAry.length; i++){
             data["persons["+i+"].name"] = saveDataAry[i].name;
@@ -108,6 +110,23 @@
 //                persons : saveDataAry
 //            },
             success:function(data){
+                alert(data.message);
+            }
+        });
+    }
+
+    function complexString() {
+        var users = {};
+        users.title = "sagelasy";
+        users.age = 20000;
+        users.persons = saveDataAry;
+        $.ajax({
+            url: "${ctx}/main/complexString",
+            type : "POST",
+            dataType: "json",
+            contentType : 'application/json;charset=utf-8',
+            data: JSON.stringify(users),
+            success: function (data) {
                 alert(data.message);
             }
         });
