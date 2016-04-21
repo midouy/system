@@ -64,6 +64,7 @@ public class Main
 	public void TestArray(@RequestBody List<Person> users, HttpServletRequest request)
 	{
 		System.out.println("testArray");
+		System.out.println(request.getSession().getAttribute("time"));
 		DataShower.show(users);
 	}
 
@@ -113,13 +114,14 @@ public class Main
 	 */
 	@RequestMapping(value = "complexString")
 	@ResponseBody
-	public Map<String, Object> complexString(@RequestBody PersonList users)
+	public Map<String, Object> complexString(HttpServletRequest request, @RequestBody PersonList users)
 	{
 		try
 		{
+			request.getSession().setAttribute("time",DateUtils.getCurrentFormatDateTime());
 			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : >>> complexString <<<");
 			System.out.println(users);
-
+			System.out.println(request.getSession().getAttribute("time"));
 		} catch (Exception e)
 		{
 			e.printStackTrace();

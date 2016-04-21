@@ -21,7 +21,7 @@ public class JSPfilter implements Filter
 
         filterChain.doFilter(servletRequest, servletResponse);
 
-        System.out.println("JSP filter is processing when RESPONSE passing...");
+//        System.out.println("JSP filter is processing when RESPONSE passing...");
     }
 
     public void destroy()
