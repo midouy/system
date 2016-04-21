@@ -1,4 +1,4 @@
-package org.system.web.controller.accountX;
+package org.system.web.controller.mvcExample.beansForExample;
 
 /**
  * Created by wangyanming on 2016/4/19.

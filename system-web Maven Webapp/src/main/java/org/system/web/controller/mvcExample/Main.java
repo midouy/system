@@ -1,4 +1,4 @@
-package org.system.web.controller;
+package org.system.web.controller.mvcExample;
 
 import bit.wym.commons.util.DataShower;
 import org.springframework.stereotype.Controller;
@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.system.web.controller.accountX.Person;
+import org.system.web.controller.mvcExample.beansForExample.Person;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.HashMap;
 import java.util.List;
 
 /**

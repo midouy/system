@@ -14,7 +14,7 @@
     <title>main test !</title>
 </head>
 <body>
-
+    <input type="button" value="testArray" onclick="testArray();">
 </body>
 <script type="text/javascript" src="${ctx}/js/jq_183.js"></script>
 <script>
@@ -31,7 +31,7 @@
             contentType:'application/json; charset=UTF-8',
             data:JSON.stringify(saveDataAry),
             success:function(data){
-
+                alert(data)
             }
         });
     }

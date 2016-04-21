@@ -17,7 +17,7 @@ public class JSPfilter implements Filter
 
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException
     {
-        System.out.println("JSP filter is processing when REQUEST passing...");
+        System.out.println("\nJSP filter is processing when REQUEST passing...");
 
         filterChain.doFilter(servletRequest, servletResponse);
 

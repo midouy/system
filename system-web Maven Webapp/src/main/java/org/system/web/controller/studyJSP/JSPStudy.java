@@ -1,4 +1,4 @@
-package org.system.web.controller;
+package org.system.web.controller.studyJSP;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

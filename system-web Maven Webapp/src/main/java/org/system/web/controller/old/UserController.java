@@ -1,4 +1,4 @@
-package org.system.web.controller;
+package org.system.web.controller.old;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
