@@ -74,7 +74,7 @@ public class MvcController
 		{
 			System.out.println("REQUEST Getting : testBean");
 			System.out.println(person);
-			ResponseUtil.successResult("Request SUCCESS !");
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -99,7 +99,7 @@ public class MvcController
 			System.out.println("name : " + users.getTitle());
 			System.out.println("age : " + users.getAge());
 			DataShower.show(users.getPersons());
-			ResponseUtil.successResult("Request SUCCESS !");
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -121,7 +121,7 @@ public class MvcController
 			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : >>> complexString <<<");
 			System.out.println(users);
 			System.out.println(request.getSession().getAttribute("time"));
-			ResponseUtil.successResult("Request SUCCESS !");
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
