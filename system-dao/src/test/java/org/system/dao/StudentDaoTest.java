@@ -6,9 +6,6 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
-import static org.hamcrest.CoreMatchers.*;
-
-import org.hamcrest.CoreMatchers;
 import org.junit.Assert;
 import org.junit.Test;
 import org.system.domain.Article;
@@ -16,6 +13,8 @@ import org.system.domain.Student;
 
 import java.io.Reader;
 import java.util.List;
+
+import static org.hamcrest.CoreMatchers.is;
 
 /**
  * Created by wangyanming on 2015/9/9.
