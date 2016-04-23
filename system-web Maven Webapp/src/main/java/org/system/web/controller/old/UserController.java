@@ -24,7 +24,7 @@ public class UserController
     @RequestMapping("/testShow")
     public String testShow(HttpServletRequest request, Model model)
     {
-        return "showUser";
+        return "old/showUser";
     }
 
     @RequestMapping("/showUser")
@@ -42,7 +42,7 @@ public class UserController
         User user = this.userService.getUser(name);
 
         model.addAttribute("user", user);
-        return "showUser";
+        return "old/showUser";
     }
 
     @RequestMapping("/addUser")
@@ -65,7 +65,7 @@ public class UserController
 
         //清除测试数据
         userService.deleteUser(user.getName());
-        return "addUser";
+        return "old/addUser";
     }
 
     @RequestMapping("/deleteUser")
@@ -77,17 +77,17 @@ public class UserController
         if(null==name)
         {
             model.addAttribute("msg","user name is NULL !");
-            return "error";
+            return "common/error";
         }
         if(userService.getUser(name)==null)
         {
             model.addAttribute("msg"," This user Not exit");
-            return "error";
+            return "common/error";
         }
 
         userService.deleteUser(name);
         logger.info("user delete name : " + name);
-        return "success";
+        return "common/success";
     }
 
     public UserController()

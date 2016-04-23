@@ -1,6 +1,8 @@
 package org.system.web.controller.studyJSP;
 
+import bit.wym.commons.date.DateUtils;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
@@ -15,19 +17,33 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/JSP")
 public class JSPStudy
 {
-    private static String CONTEXT = "study/";
 
     //拦截  [basic | advanced | functions] / JSP_NAME
-    @RequestMapping("*")
+    @RequestMapping("/study")
     public String accessJSP(HttpServletRequest request)
     {
         String jspName = request.getParameter("jspName").trim();
-        System.out.println("access JSP :  "+CONTEXT+jspName+".jsp");
+//        System.out.println("access JSP :  "+CONTEXT+jspName+".jsp");
 
-        int index = request.getRequestURL().toString().indexOf("JSP")+4;
-        String subContext = request.getRequestURL().toString().substring(index);
-        
-        return CONTEXT+subContext+"/"+jspName;
+//        int index = request.getRequestURL().toString().indexOf("JSP")+4;
+        String subContext = request.getParameter("subContext");
+
+		System.out.println("JSPStudy/study/" + subContext + "/" + jspName);
+		return "JSPStudy/study/"+subContext+"/"+jspName;
     }
+
+	@RequestMapping(value = "index")
+	public String index(HttpServletRequest request, Model model)
+	{
+		try
+		{
+			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : >>> index <<<");
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		return "JSPStudy/index";
+	}
 
 }

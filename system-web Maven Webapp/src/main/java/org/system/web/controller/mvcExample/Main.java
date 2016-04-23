@@ -17,19 +17,14 @@ import java.util.Map;
  * Created by wangyanming on 2015/8/18.
  */
 @Controller
-@RequestMapping("main")
+@RequestMapping("mvc")
 public class Main
 {
-    @RequestMapping("mainPage")
-    public String showMainPage()
-    {
-        return "main/test";
-    }
 
-    @RequestMapping("test")
+    @RequestMapping("index")
     public String showTest()
     {
-        return "test";
+        return "mvcExample/index";
     }
 
 	@RequestMapping("/{index}/test")
@@ -38,7 +33,7 @@ public class Main
 
 		System.out.println("index = " + index);
 
-		return "test";
+		return "old/test";
 	}
 
 

@@ -24,11 +24,11 @@ public class StudentController
     {
         String name = request.getParameter("name");
         if(null==name)
-            return "error";
+            return "common/error";
 
         Student student = studentService.getStudent(name);
         model.addAttribute("student",student);
-        return "showStudent";
+        return "old/showStudent";
     }
 
 }

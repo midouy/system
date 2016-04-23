@@ -1,7 +1,11 @@
+<%@ page contentType="text/html;charset=utf-8" language="java" %>
+<%@ page language="java" import="java.util.*" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 
-    <script type="text/javascript" src="js/jQuery.js"></script>
+    <script type="text/javascript" src="${ctx}/js/jq_183.js"></script>
     <script type="text/javascript">
 
         $(function(){
@@ -32,7 +36,8 @@
 <div>
     <p><b>basic</b></p>
 
-    <form action="JSP/basic" id="basic">
+    <form action="${ctx}/JSP/study" id="basic">
+        <input type="hidden" name="subContext" value="basic">
         <input type="text" name="jspName">
         <input type="submit">
     </form>
@@ -52,7 +57,8 @@
 <div>
     <p><b>functions</b></p>
 
-    <form action="JSP/functions" id = "function">
+    <form action="${ctx}/JSP/study" id = "function">
+        <input type="hidden" name="subContext" value="functions">
         <input type="text" name="jspName">
         <input type="submit">
     </form>
@@ -67,7 +73,8 @@
 <div>
     <p><b>advanced</b></p>
 
-    <form action="JSP/advanced" id="advanced">
+    <form action="${ctx}/JSP/study" id="advanced">
+        <input type="hidden" name="subContext" value="advanced">
         <input type="text" name="jspName">
         <input type="submit">
     </form>
