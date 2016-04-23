@@ -36,7 +36,7 @@
     function testArray(){
         $.ajax({
             type:"POST",
-            url:"${ctx}/main/test/array",
+            url:"${ctx}/mvc/test/array",
             dataType:"json",
             contentType:'application/json; charset=UTF-8',
             data:JSON.stringify(saveDataAry),
@@ -52,7 +52,7 @@
         data["age"] = 2000;
 
         $.ajax({
-           url: "${ctx}/main/test/normal",
+           url: "${ctx}/mvc/test/normal",
             dataType:"json",
             contentType:'application/json; charset=UTF-8',
             data:data,
@@ -68,7 +68,7 @@
 
     function testBean(){
         $.ajax({
-            url: "${ctx}/main/testBean",
+            url: "${ctx}/mvc/testBean",
             dataType: "json",
             data: {
                 name : "sagelasy",
@@ -101,7 +101,7 @@
          persons[1].address:gr
          */
         $.ajax({
-            url: "${ctx}/main/complex",
+            url: "${ctx}/mvc/complex",
             dataType:"json",
             data:data,
 //            {
@@ -121,7 +121,7 @@
         users.age = 20000;
         users.persons = saveDataAry;
         $.ajax({
-            url: "${ctx}/main/complexString",
+            url: "${ctx}/mvc/complexString",
             type : "POST",
             dataType: "json",
             contentType : 'application/json;charset=utf-8',

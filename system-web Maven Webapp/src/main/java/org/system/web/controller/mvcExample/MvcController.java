@@ -18,7 +18,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping("mvc")
-public class Main
+public class MvcController
 {
 
     @RequestMapping("index")
@@ -86,6 +86,8 @@ public class Main
 	 * 可以传递多个参数
 	 *
 	 */
+	@RequestMapping(value = "complex")
+	@ResponseBody
 	public Map<String, Object> complex(PersonList users , String anotherPara)
 	{
 		try
