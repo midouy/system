@@ -17,19 +17,14 @@ import java.util.Map;
  * Created by wangyanming on 2015/8/18.
  */
 @Controller
-@RequestMapping("main")
-public class Main
+@RequestMapping("mvc")
+public class MvcController
 {
-    @RequestMapping("mainPage")
-    public String showMainPage()
-    {
-        return "main/test";
-    }
 
-    @RequestMapping("test")
+    @RequestMapping("index")
     public String showTest()
     {
-        return "test";
+        return "mvcExample/index";
     }
 
 	@RequestMapping("/{index}/test")
@@ -38,7 +33,7 @@ public class Main
 
 		System.out.println("index = " + index);
 
-		return "test";
+		return "old/test";
 	}
 
 
@@ -79,6 +74,7 @@ public class Main
 		{
 			System.out.println("REQUEST Getting : testBean");
 			System.out.println(person);
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -91,6 +87,8 @@ public class Main
 	 * 可以传递多个参数
 	 *
 	 */
+	@RequestMapping(value = "complex")
+	@ResponseBody
 	public Map<String, Object> complex(PersonList users , String anotherPara)
 	{
 		try
@@ -101,6 +99,7 @@ public class Main
 			System.out.println("name : " + users.getTitle());
 			System.out.println("age : " + users.getAge());
 			DataShower.show(users.getPersons());
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
@@ -122,6 +121,7 @@ public class Main
 			System.out.println("REQUEST Getting [ " + DateUtils.getCurrentFormatDateTime() + " ] : >>> complexString <<<");
 			System.out.println(users);
 			System.out.println(request.getSession().getAttribute("time"));
+			return ResponseUtil.successResult("Request SUCCESS !");
 		} catch (Exception e)
 		{
 			e.printStackTrace();
