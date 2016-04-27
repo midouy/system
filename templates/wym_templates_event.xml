@@ -1,0 +1,295 @@
+<templateSet group="wym.templates.event">
+  <template name="constString" value="//$description$&#10;public static final String $END$" description="public static fianl String" toReformat="false" toShortenFQNames="true">
+    <variable name="description" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="true" />
+      <option name="COMPLETION" value="true" />
+    </context>
+  </template>
+  <template name="constInt" value="//$description$&#10;public static final int $END$" description="public static final int" toReformat="false" toShortenFQNames="true">
+    <variable name="description" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="JAVA_CODE" value="true" />
+      <option name="JAVA_STATEMENT" value="true" />
+      <option name="JAVA_EXPRESSION" value="true" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="true" />
+      <option name="JAVA_STRING" value="true" />
+      <option name="COMPLETION" value="true" />
+    </context>
+  </template>
+  <template name="remaEvent" value="/**&#10; * $description$&#10; */&#10;@org.springframework.web.bind.annotation.RequestMapping(value=&quot;$REUQEST$&quot;)&#10;@com.wanmei.util.validate.SwitchValidate(loginValidate = @LoginValidate())&#10;@com.wanmei.util.validate.LoginValidate&#10;@org.springframework.web.bind.annotation.ResponseBody&#10;public java.util.Map&lt;java.lang.String ,java.lang.Object&gt; $REUQEST$(javax.servlet.http.HttpServletRequest request, org.springframework.ui.Model model, $Paras$){&#10;&#9;&#9;try&#10;&#9;&#9;{&#10;&#9;&#9;&#9;System.out.println(&quot;REQUEST Coming [ &quot;+ DateUtils.getCurrentFormatDateTime()+&quot; ] : &gt;&gt;&gt; $REUQEST$ &lt;&lt;&lt;&quot;);&#10;&#9;&#9;&#9;String username= ActionUtil.getUserName(&quot;USER&quot;);&#10;&#9;&#9;&#9;if(username==null){&#10;&#9;&#9;&#9;&#9;return service.failResponseMap(null, &quot; 请重新登录 &quot;);&#10;&#9;&#9;&#9;}&#10;&#9;&#9;&#9;return service.$REUQEST$($Parameters$);&#10;&#9;&#9;}catch (java.lang.Exception e){&#10;&#9;&#9;&#9;e.printStackTrace();&#10;&#9;&#9;}&#10;&#9;&#9;return service.failResponseMap(null ,&quot; Request Failed : &quot;+&quot;$REUQEST$&quot;);&#10;&#9;}" description="SpringMVC controller POST for Event" toReformat="true" toShortenFQNames="true">
+    <variable name="description" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="REUQEST" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Paras" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Parameters" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_STATEMENT" value="false" />
+      <option name="JAVA_EXPRESSION" value="false" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="SQL" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GROOVY_EXPRESSION" value="false" />
+      <option name="GROOVY_STATEMENT" value="false" />
+      <option name="GROOVY_DECLARATION" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="MXML" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="JSP" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="GSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+      <option name="KOTLIN_STATEMENT" value="false" />
+      <option name="KOTLIN_CLASS" value="false" />
+      <option name="KOTLIN_EXPRESSION" value="false" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="reinEvent" value="@org.springframework.web.bind.annotation.RequestMapping(value=&quot;$REUQEST$&quot;)&#10;public String $REUQEST$(javax.servlet.http.HttpServletRequest request, org.springframework.ui.Model model){&#10;&#9;try&#10;&#9;{&#10;&#9;&#9;System.out.println(&quot;REQUEST Getting [ &quot;+ DateUtils.getCurrentFormatDateTime()+&quot; ] : &gt;&gt;&gt; $REUQEST$ &lt;&lt;&lt;&quot;);&#10;&#9;&#9;$CODE$&#10;&#9;}catch (java.lang.Exception e){&#10;&#9;&#9;e.printStackTrace();&#10;&#9;}&#10;&#9;return &quot;$PATH$/$REUQEST$&quot;;&#10;}" description="SpringMVC controller GET for Event" toReformat="true" toShortenFQNames="true">
+    <variable name="REUQEST" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="PATH" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="CODE" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_STATEMENT" value="false" />
+      <option name="JAVA_EXPRESSION" value="false" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="SQL" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GROOVY_EXPRESSION" value="false" />
+      <option name="GROOVY_STATEMENT" value="false" />
+      <option name="GROOVY_DECLARATION" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="MXML" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="JSP" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="GSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+      <option name="KOTLIN_STATEMENT" value="false" />
+      <option name="KOTLIN_CLASS" value="false" />
+      <option name="KOTLIN_EXPRESSION" value="false" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="pageEvent" value="public com.wanmei.common.lang.CommonList&lt;$Class$&gt; $MethodName$(java.lang.Integer pageNo,java.lang.Integer pageSize)throws java.lang.Exception{&#10;        com.wanmei.common.search.Search search = new com.wanmei.common.search.Search();&#10;        java.lang.String sql=&quot;select * from &quot;+$TableName$;&#10;        java.lang.String countSql=&quot;select count(1) from &quot;+$TableName$;&#10;        search.addWhere(com.wanmei.common.search.Search.SEARCH_AND,&quot; username = ?&quot;,username);&#10;        search.addSelectSql(sql);&#10;        search.addSelectCountSql(countSql);&#10;        search.addOrder(&quot;$orderColumn$&quot;, com.wanmei.common.search.Search.SEARCH_DESC);&#10;        search.setPageNo(pageNo);&#10;        search.setPageSize(pageSize);&#10;&#9;    //service 层使用 ObjectResponseWrapper.createPagenationMap()方法将这个返回值包装成Map&lt;String, Object&gt;&#10;        return readIdao.pagination(search,$Class$.class);&#10;    }" description="pageNation in Dao" toReformat="true" toShortenFQNames="true">
+    <variable name="Class" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="MethodName" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="TableName" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="orderColumn" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="false" />
+      <option name="HTML" value="false" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_STATEMENT" value="false" />
+      <option name="JAVA_EXPRESSION" value="false" />
+      <option name="JAVA_DECLARATION" value="true" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="SQL" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GROOVY_EXPRESSION" value="false" />
+      <option name="GROOVY_STATEMENT" value="false" />
+      <option name="GROOVY_DECLARATION" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="MXML" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="JSP" value="false" />
+      <option name="OGNL" value="false" />
+      <option name="GSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+      <option name="KOTLIN_STATEMENT" value="false" />
+      <option name="KOTLIN_CLASS" value="false" />
+      <option name="KOTLIN_EXPRESSION" value="false" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="loginEvent" value="&lt;%--登录模块--%&gt;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;${ctx}/extend/wmpassport2/wanmei.passport.js&quot;&gt;&lt;/script&gt;&#10;&lt;script type=&quot;text/javascript&quot;&gt;&#10;    var username = &quot;${sessionScope.USER.account}&quot;;&#10;    function isEmpty(str) {&#10;        return str == null || str == &quot;&quot;;&#10;    }&#10;    function login() {&#10;        wanmei.passport.islogin({&#10;            session: 'USER',&#10;            _true: function () {&#10;            },&#10;            _false: function () {&#10;                wanmei.passport.login({&#10;                    session: 'USER',&#10;                    hdid: '$Event_Status$'&#10;                })&#10;            }&#10;        });&#10;    }&#10;    function logout() {&#10;        wanmei.passport.logout({&#10;            opacity: 60,&#10;            session: 'USER'&#10;        });&#10;    }&#10;    function initLoginLogout() {&#10;        $(&quot;#$Login_Button$&quot;).click(function () {&#10;            login();&#10;        });&#10;        $(&quot;#$LogOunt_Button$&quot;).click(function () {&#10;            logout();&#10;        });&#10;        if (isEmpty(username)) {&#10;            $('#$Logout_box$').hide();&#10;            $('#$Login_box$').show();&#10;        } else {&#10;            $('#$Login_box$').hide();&#10;            $('#$Logout_box$').show();&#10;            $(&quot;#$User_Name_ID$&quot;).html(username);&#10;        }&#10;    }&#10;    $(function () { //初始化登录模块&#10;        initLoginLogout();&#10;    })&#10;    /*&#10;    &lt;div&gt;&#10;        &lt;div id=&quot;Login_box&quot;&gt;&lt;div id = &quot;Login_Button&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#10;        &lt;div id=&quot;Logout_box&quot;&gt;&lt;div id = &quot;Logout_Button&quot;&gt;&lt;/div&gt;&lt;/div&gt;&#10;    &lt;/div&gt;&#10;    */&#10;&lt;/script&gt;" description="Login JS" toReformat="true" toShortenFQNames="true">
+    <variable name="Event_Status" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Login_Button" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="LogOunt_Button" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Logout_box" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="Login_box" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="User_Name_ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_STATEMENT" value="false" />
+      <option name="JAVA_EXPRESSION" value="false" />
+      <option name="JAVA_DECLARATION" value="false" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="SQL" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GROOVY_EXPRESSION" value="false" />
+      <option name="GROOVY_STATEMENT" value="false" />
+      <option name="GROOVY_DECLARATION" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="MXML" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="JSP" value="true" />
+      <option name="OGNL" value="false" />
+      <option name="GSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+      <option name="KOTLIN_STATEMENT" value="false" />
+      <option name="KOTLIN_CLASS" value="false" />
+      <option name="KOTLIN_EXPRESSION" value="false" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+  <template name="pageJsEvent" value="&lt;script type=&quot;text/javascript&quot; src=&quot;${ctx}/static/jquery/plugin/jquery.tmpl.js&quot;&gt;&lt;/script&gt;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;${ctx}/static/jquery/plugin/jquery.pagination.js&quot;&gt;&lt;/script&gt;&#10;&lt;script type=&quot;text/javascript&quot; src=&quot;${ctx}/static/jquery/event/ajaxpage-jqplugin.js&quot;&gt;&lt;/script&gt;&#10;&#10;&lt;!-- 分页开始--&gt;&#10;&lt;script type=&quot;text/x-jquery-tmpl&quot; id=&quot;$TMPL_ID$&quot;&gt;&#10;    &lt;ul class=&quot;clearfix&quot;&gt;&#10;&#9;&#9;{{each(i,obj) records}}&#10;&#9;&#9;&#9;    &lt;li id=&quot;work{{= obj.id}}&quot; style=&quot;cursor:pointer;&quot; &gt;&#10;&#9;&#9;&#9;        &lt;a href=&quot;/w2i/whereru/detail?userId={{= obj.id}}&quot; style = &quot;color:#771d1f;&quot;&gt;&#10;&#9;&#9;&#9;        {{if currentPage==1&amp;&amp;i==0}}&#10;&#9;&#9;&#9;            &lt;span class=&quot;rank&quot;&gt;&lt;img src=&quot;http://event51.wanmei.com/w2i/201510/lost/images/ranking1.png&quot; width=&quot;78&quot; height=&quot;68&quot; /&gt;&lt;/span&gt;&#10;&#9;&#9;&#9;        {{else currentPage==1&amp;&amp;i==1}}&#10;&#9;&#9;&#9;            &lt;span class=&quot;rank&quot;&gt;&lt;img src=&quot;http://event51.wanmei.com/w2i/201510/lost/images/ranking2.png&quot; width=&quot;78&quot; height=&quot;68&quot; /&gt;&lt;/span&gt;&#10;&#9;&#9;&#9;        {{else currentPage==1&amp;&amp;i==2}}&#10;&#9;&#9;&#9;            &lt;span class=&quot;rank&quot;&gt;&lt;img src=&quot;http://event51.wanmei.com/w2i/201510/lost/images/ranking3.png&quot; width=&quot;78&quot; height=&quot;68&quot; /&gt;&lt;/span&gt;&#10;&#9;&#9;&#9;        {{else}}&#10;&#9;&#9;&#9;            &lt;span class=&quot;rank&quot;&gt;&lt;strong&gt;{{= (currentPage-1)*10+i+1}}&lt;/strong&gt;&lt;/span&gt;&#10;&#9;&#9;&#9;        {{/if}}&#10;                        &lt;span class=&quot;name&quot;&gt;&lt;strong&gt;{{= obj.rolename}}&lt;/strong&gt;&lt;/span&gt;&#10;                        &lt;span class=&quot;id&quot;&gt;&lt;strong&gt;{{= obj.id}}&lt;/strong&gt;&lt;/span&gt;&#10;                        &lt;span class=&quot;server&quot;&gt;&lt;strong&gt;{{= obj.server}}&lt;/strong&gt;&lt;/span&gt;&#10;                        &lt;span class=&quot;zanNum&quot;&gt;&lt;strong&gt;{{= obj.ballot}}&lt;/strong&gt;&lt;/span&gt;&#10;                    &lt;/a&gt;&#10;                        &lt;span class=&quot;detaile&quot;&gt;&lt;a href=&quot;/w2i/whereru/detail?userId={{= obj.id}}&quot;&gt;&lt;/a&gt;&lt;/span&gt;&#10;                &lt;/li&gt;&#10;&#9;&#9;{{/each}}&#10;    &lt;/ul&gt;&#10;&#9;&lt;/script&gt;&#10;&lt;script type=&quot;text/javascript&quot;&gt;&#10;    var paginationOptions = {&#10;        pageSize: 10,&#10;        current_page: 0,&#10;        data_area_id: &quot;$DIV_DATA_ID$&quot;, //数据区&#10;        tmpl_script: &quot;$TMPL_ID$&quot;, //模板ID&#10;        page_area_id: &quot;$DIV_PAGE_ID$&quot;, //页码区&#10;        num_display_entries: 10,&#10;        num_edge_entries: 0,&#10;        prev_text: &quot;上一页&quot;,&#10;        next_text: &quot;下一页&quot;,&#10;        link_to: &quot;javascript:void(0);&quot;,&#10;        ellipse_text: &quot;&quot;,&#10;        afterLoad:function(){&#10;            $AFTER_LOAD_FUNCTION$ //after Load Function&#10;        }&#10;    };&#10;     //刷新列表&#10;    function initPagination(){&#10;        paginationOptions.url =&quot;${ctx}/$game$/$event$/$interface$&quot;;&#10;        $.hd.pagination(paginationOptions);&#10;    }&#10;    /*&#10;     &lt;div id=&quot;data&quot;&gt;&lt;/div&gt;&#10;     &lt;div id=&quot;page&quot;&gt;&lt;/div&gt;&#10;    */&#10;&lt;/script&gt;&#10;&lt;%--分页结束--%&gt;" description="pagenation for Template in Js" toReformat="true" toShortenFQNames="true">
+    <variable name="TMPL_ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIV_DATA_ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="DIV_PAGE_ID" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="AFTER_LOAD_FUNCTION" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="game" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="event" expression="" defaultValue="" alwaysStopAt="true" />
+    <variable name="interface" expression="" defaultValue="" alwaysStopAt="true" />
+    <context>
+      <option name="HTML_TEXT" value="true" />
+      <option name="HTML" value="true" />
+      <option name="XSL_TEXT" value="false" />
+      <option name="XML" value="false" />
+      <option name="XML_TEXT" value="false" />
+      <option name="JSON" value="false" />
+      <option name="JAVA_CODE" value="false" />
+      <option name="JAVA_STATEMENT" value="false" />
+      <option name="JAVA_EXPRESSION" value="false" />
+      <option name="JAVA_DECLARATION" value="false" />
+      <option name="JAVA_COMMENT" value="false" />
+      <option name="JAVA_STRING" value="false" />
+      <option name="COMPLETION" value="false" />
+      <option name="CSS_PROPERTY_VALUE" value="false" />
+      <option name="CSS_DECLARATION_BLOCK" value="false" />
+      <option name="CSS_RULESET_LIST" value="false" />
+      <option name="CSS" value="false" />
+      <option name="SQL" value="false" />
+      <option name="ColdFusion" value="false" />
+      <option name="CUCUMBER_FEATURE_FILE" value="false" />
+      <option name="JAVA_SCRIPT" value="false" />
+      <option name="JS_EXPRESSION" value="false" />
+      <option name="JSX_HTML" value="false" />
+      <option name="JS_STATEMENT" value="false" />
+      <option name="TypeScript" value="false" />
+      <option name="GROOVY" value="false" />
+      <option name="GROOVY_EXPRESSION" value="false" />
+      <option name="GROOVY_STATEMENT" value="false" />
+      <option name="GROOVY_DECLARATION" value="false" />
+      <option name="MAVEN" value="false" />
+      <option name="ASPECTJ" value="false" />
+      <option name="ACTION_SCRIPT" value="false" />
+      <option name="MXML" value="false" />
+      <option name="CoffeeScript" value="false" />
+      <option name="JSP" value="true" />
+      <option name="OGNL" value="false" />
+      <option name="GSP" value="false" />
+      <option name="KOTLIN" value="false" />
+      <option name="KOTLIN_TOPLEVEL" value="false" />
+      <option name="KOTLIN_STATEMENT" value="false" />
+      <option name="KOTLIN_CLASS" value="false" />
+      <option name="KOTLIN_EXPRESSION" value="false" />
+      <option name="KOTLIN_COMMENT" value="false" />
+      <option name="HAML" value="false" />
+      <option name="OTHER" value="false" />
+    </context>
+  </template>
+</templateSet>
