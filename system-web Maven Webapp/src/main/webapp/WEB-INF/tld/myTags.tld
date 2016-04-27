@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-jsptaglibrary_2_1.xsd"
+        version="2.1">
+
+    <description>Custom Function</description>
+    <tlib-version>1.0</tlib-version>
+    <short-name>my</short-name>
+    <uri>http://midouy.study.com/jsp/tld/myTags</uri>
+
+    <!-- Invoke 'Generate' action to add tags or functions -->
+    <!--JSP 自定义标签库 JSP tags library Descriptror-->
+
+    <!--对JSP标签进行自定义描述, 为JSP页面添加一些其他功能的支持-->
+
+    <function>
+        <name>hello</name>
+        <!--添加Java类方法的支持-->
+        <function-class>org.system.web.jspTag.HelloTags</function-class>
+        <function-signature>java.lang.String Hello(java.lang.String))</function-signature>
+    </function>
+
+</taglib>

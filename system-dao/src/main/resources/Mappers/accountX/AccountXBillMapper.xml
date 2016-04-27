@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.system.dao.accountX.AccountXBillDao">
+
+    <resultMap id="AllBillList" type="org.system.domain.accountX.AccountXBill">
+        <!--column是只从数据库查到的字段名称-->
+        <!--property是只Student类的属性-->
+        <!--一般情况下, 这种map的目的在于隐藏数据库中的不想对外显示的数据, 并且需要建立新的类去封装这些需要显示的数据-->
+        <result column="id" property="id"/>
+        <result column="money" property="money"/>
+        <result column="date" property="date"/>
+        <result column="note" property="note"/>
+        <result column="payer" property="payer"/>
+    </resultMap>
+
+    <select id="getAllBills" resultMap="AllBillList">
+        select * from accountx_bill where record_id = -999
+    </select>
+
+    <select id="getBillsLogByRecordId" resultMap="AllBillList" parameterType="java.lang.Integer">
+        select * from accountx_bill where record_id = #{id}
+    </select>
+
+    <select id="getBillByTime" resultType="org.system.domain.accountX.AccountXBill" parameterType="java.lang.String">
+        select * from accountx_bill where date = #{date}
+    </select>
+
+    <insert id="insertNewBill" parameterType="org.system.domain.accountX.AccountXBill">
+        INSERT into accountx_bill (payer,money,date,note,record_id)
+        VALUES (#{payer}, #{money}, #{date}, #{note}, #{recordId})
+    </insert>
+
+    <delete id="DeleteBillById" parameterType="java.lang.Integer">
+        delete from accountx_bill where id  = #{id} AND record_id = -999
+    </delete>
+
+    <delete id="deleteAllBills">
+        delete from accountx_bill where record_id = -999
+    </delete>
+
+    <update id="updateBillRecordId" parameterType="java.lang.Integer">
+        update accountx_bill set record_id = #{recordId} where record_id = -999
+    </update>
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="org.system.dao.account.BillResultDao">
+
+    <resultMap id="AllResultHistory" type="org.system.domain.account.BillResult">
+        <!--column是只从数据库查到的字段名称-->
+        <!--property是只Student类的属性-->
+        <!--一般情况下, 这种map的目的在于隐藏数据库中的不想对外显示的数据, 并且需要建立新的类去封装这些需要显示的数据-->
+        <result column="id" property="id"/>
+        <result column="w_Give_l" property="w_Give_l"/>
+        <result column="w_Give_c" property="w_Give_c"/>
+        <result column="w_Give_z" property="w_Give_z"/>
+        <result column="l_Give_c" property="l_Give_c"/>
+        <result column="l_Give_z" property="l_Give_z"/>
+        <result column="c_Give_z" property="c_Give_z"/>
+        <result column="date" property="date"/>
+    </resultMap>
+
+    <select id="listAllResultHistory" resultMap="AllResultHistory">
+        SELECT * FROM billResults
+    </select>
+
+    <insert id="addBillResult" parameterType="org.system.domain.account.BillResult">
+        INSERT into billResults (w_Give_l,w_Give_c,w_Give_z,l_Give_c,l_Give_z, c_Give_z,date) VALUES (#{w_Give_l}, #{w_Give_c}, #{w_Give_z},#{l_Give_c}, #{l_Give_z},#{c_Give_z},#{date})
+    </insert>
+
+</mapper>
