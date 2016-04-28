@@ -11,7 +11,7 @@ import org.system.common.response.ResponseUtil;
 import org.system.common.utils.IpUtils;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
-import org.system.web.annotation.SystemControllerLog;
+import org.system.web.annotation.aspect.SystemControllerLog;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;

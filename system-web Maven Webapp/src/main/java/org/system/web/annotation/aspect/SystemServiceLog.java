@@ -1,4 +1,4 @@
-package org.system.web.annotation;
+package org.system.web.annotation.aspect;
 import java.lang.annotation.*;
 /**
  * Created by wangyanming on 2016/4/28.
