@@ -19,6 +19,7 @@
     <input type="button" name="accountX" value="AccountX" onclick="toAccountIndex('accountX')">
     <input type="button" name="JSPStudy" value="JSPStudy" onclick="toAccountIndex('JSP')">
     <input type="button" name="mvc" value="MVC" onclick="toAccountIndex('mvc')">
+    <input type="button" name="layer" value="Layer" onclick="window.open('${ctx}/html/jQuery.Layer.Dialogs.html');">
 </div>
 
 </body>
