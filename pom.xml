@@ -192,8 +192,21 @@
             <artifactId>freemarker</artifactId>
             <version>2.3.20</version>
         </dependency>
-    </dependencies>
 
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.12</version>
+        </dependency>
+
+
+    </dependencies>
 
     <modules>
         <!-- 这里所设置的其实不是artifactId, 而是路径 -->
