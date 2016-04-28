@@ -11,6 +11,7 @@ import org.system.common.response.ResponseUtil;
 import org.system.common.utils.IpUtils;
 import org.system.domain.accountX.AccountXBill;
 import org.system.service.accountX.AccountXService;
+import org.system.web.annotation.SystemControllerLog;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.DateFormat;
@@ -29,6 +30,7 @@ public class AccountXController
     private AccountXService accountXService;
 
     @RequestMapping("/index")
+	@SystemControllerLog(description = "index")
     public String index(HttpServletRequest request, Model model)
     {
         try
