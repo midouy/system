@@ -17,7 +17,7 @@
     </resultMap>
 
     <select id="getAllBills" resultMap="AllBillList">
-        select * from accountx_bill where record_id = -999
+        select * from accountx_bill where record_id = -999 order by id desc
     </select>
 
     <select id="getBillsLogByRecordId" resultMap="AllBillList" parameterType="java.lang.Integer">
