@@ -25,11 +25,11 @@
     <task:annotation-driven />
 
     <!-- 多线程任务-串行方式任务 -->
-    <task:scheduler id="myScheduler" pool-size="10"/>
-    <task:scheduled-tasks scheduler="myScheduler">
-        <task:scheduled ref="springTaskTestService" method="execute" cron="1/1 * * * * *"/>
-        <task:scheduled ref="springTaskThreadService" method="execute" cron="1/1 * * * * *"/>
-    </task:scheduled-tasks>
+    <!--<task:scheduler id="myScheduler" pool-size="10"/>-->
+    <!--<task:scheduled-tasks scheduler="myScheduler">-->
+        <!--<task:scheduled ref="springTaskTestService" method="execute" cron="1/1 * * * * *"/>-->
+        <!--<task:scheduled ref="springTaskThreadService" method="execute" cron="1/1 * * * * *"/>-->
+    <!--</task:scheduled-tasks>-->
 
     <!--单线程-串行方式任务-->
     <!--<task:scheduled-tasks >-->
